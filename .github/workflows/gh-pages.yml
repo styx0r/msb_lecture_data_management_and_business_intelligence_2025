@@ -44,6 +44,7 @@ jobs:
           cp index.html _site/
           cp questions.html _site/
           cp -rf slides _site/
+          rm -rf _site/slides/reveal.js
           mv reveal.js _site/slides/
           
         
