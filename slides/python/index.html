@@ -95,7 +95,8 @@
         ### Running Python
         - In this tutorial we will use goolge colabs to run Python
         - You need a google account to run colabs
-        - Links to the exercise colab are on the [course site](https://8gradplus.github.io/msb_lecture/)
+        - Links to the exercise colab are on the [course
+        site](https://styx0r.github.io/msb_lecture_data_management_and_business_intelligence_2025/)
         - So there is no need to install Python on your local machine.
         - We encourage you to install Python for your future projects
 
@@ -163,41 +164,41 @@
             sum(my_list) # 6
             len(my_list) # 3 
           </code></pre>
-          </section>
-          <section>
-            Remark. These are function calls
-            <pre><code data-trim data-noescape>      
+        </section>
+        <section>
+          Remark. These are function calls
+          <pre><code data-trim data-noescape>      
               print("Hello World")
               min(my_list)  
               max(my_list) 
               sum(my_list) 
               len(my_list) 
             </code></pre>
-            General  function call  
-            <pre><code data-trim data-noescape>      
+          General function call
+          <pre><code data-trim data-noescape>      
               function(param1, param2, ...) 
             </code></pre>
 
-          </section>
         </section>
-        <section>
-          Iterate through list with for loop
-          <pre><code data-trim data-noescape>      
+      </section>
+      <section>
+        Iterate through list with for loop
+        <pre><code data-trim data-noescape>      
           for element in my_list:
             # need to indent!
             print(element)
         </code></pre>
-          Manipulate lists
-          <pre><code data-trim data-noescape>      
+        Manipulate lists
+        <pre><code data-trim data-noescape>      
           result = [] 
           for x in my_list:
             result.append(x+1)  
         </code></pre>
-          Syntactic sugar: list comprehensions
-          <pre><code data-trim data-noescape>      
+        Syntactic sugar: list comprehensions
+        <pre><code data-trim data-noescape>      
           result = [x+1 for x in my_list]   
         </code></pre>
-        </section>
+      </section>
       </section>
       <section>
         Dictionaries: a collection of key value pairs
@@ -358,17 +359,25 @@
             </div>
           </section>
 
-          <section data-markdown>
-            ### Pandas DataFrame
-            - 2 dimensional data structure
-            - It consists of
-              - Columns
-              - Series (potentially different data types)
-              - Index
-            - Think of it as:
-              - Excel Spreadsheet (on steroids)
-              - SQL Table
-              - Dictionary of Series objects
+          <section>
+            <h3>Pandas DataFrame</h3>
+            <ul>
+              <li>2 dimensional data structure</li>
+              <li>It consists of
+                <ul>
+                  <li>Columns</li>
+                  <li>Series (potentially different data types)</li>
+                  <li>Index</li>
+                </ul>
+              </li>
+              <li>Think of it as:
+                <ul>
+                  <li>Excel Spreadsheet (on steroids)</li>
+                  <li>SQL Table</li>
+                  <li>Dictionary of Series objects</li>
+                </ul>
+              </li>
+            </ul>
           </section>
 
           <section data-markdown>
