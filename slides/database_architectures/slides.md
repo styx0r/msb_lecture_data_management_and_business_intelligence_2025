@@ -984,7 +984,6 @@ and <span style="color: lightgreen">map it to the discussed database types.</spa
 ---
 
 #### Databases used in AI Sphere
-
 - Graph Databases (e.g. ArangoDB, Neo4j)
 - Multimodel Databases (e.g. ArangoDB: Graph, document & Key-Value)
 - Vector Databases (Milvus, qdrant)
