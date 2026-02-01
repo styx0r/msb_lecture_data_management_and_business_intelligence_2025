@@ -973,15 +973,21 @@ and <span style="color: lightgreen">map it to the discussed database types.</spa
 
 ---
 
-#### Other Databases
+#### Further Database Types
 
-- Graph Databases (e.g. ArangoDB)
 - Key-Value Stores (e.g. Redis)
 - Column-Family Databases (e.g. Apache Cassandra)
 - Time-Series Databases (e.g. InfluxDB)
 - Search Optimized Databases (e.g. Elasticsearch)
-- Multimodel Databases (e.g. ArangoDB: Graph, document & Key-Value)
 - NewSQL Databases (e.g. CockroachDB)
+
+---
+
+#### Databases used in AI Sphere
+
+- Graph Databases (e.g. ArangoDB, Neo4j)
+- Multimodel Databases (e.g. ArangoDB: Graph, document & Key-Value)
+- Vector Databases (Milvus, qdrant)
 
 ---
 
