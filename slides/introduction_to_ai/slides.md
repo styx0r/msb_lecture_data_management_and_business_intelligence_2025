@@ -214,5 +214,73 @@ Source: https://commons.wikimedia.org/wiki/File:AI-History-Timeline-300dpi.jpg
 
 ---
 
+#### Symbolic AI example: rule-based system
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.85em;">
+    <ul>
+      <li><span style="color: orange;">Use case:</span> fraud detection at checkout</li>
+      <li><span style="color: orange;">Rules:</span> IF/THEN logic (transparent, brittle)</li>
+      <li>
+        <span style="color: orange;">Example decision logic:</span><br />
+        ≥3 failed payment attempts → block<br />
+        else if new customer → if order &gt; €500 AND credit card → manual review; else approve<br />
+        else if billing ≠ shipping → if rush shipping OR new address → flag; else approve<br />
+        else if high-risk category AND order &gt; €300 → manual review; else approve
+      </li>
+    </ul>
+  </div>
+</div>
+
+Note:
+- create decision tree on white board
+- create the corresponding python code
+
+--
+
+#### <span style="color: lightgreen;"> Create the rule based decision tree!</span>
+
+---
+
+#### Symbolic AI example: search (parcel delivery)
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.85em;">
+    <ul>
+      <li><span style="color: orange;">Use case:</span> parcel delivery shortest route</li>
+      <li><span style="color: orange;">State:</span> current city/node in the graph</li>
+      <li><span style="color: orange;">Goal:</span> reach destination with minimal cost</li>
+      <li><span style="color: orange;">Algorithm:</span> Dijkstra or A* (weighted graph)</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+<img
+  src="../assets/introduction_to_ai/animations/Astar_progress_animation.gif"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+  </div>
+</div>
+
+---
+
+#### From Data to Decisions: The ML Family
+
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.008.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+---
+
 #### <span style="color: lightgreen;"> Try to describe your 3 historical breakthroughs in AI from the beginning of the lecture in more technical terms.</span>
 
