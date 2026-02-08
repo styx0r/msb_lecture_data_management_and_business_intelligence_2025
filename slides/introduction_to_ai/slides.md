@@ -1,164 +1,39 @@
-<style>
-  /* Keep images inside slide bounds (no cropping in presentation mode) */
-  .img-full {
-    max-width: 100%;
-    max-height: 60vh;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    margin: 0.25rem auto 0 auto;
+TODO: 
+ - one slide with some examples
+ - ai based future is full of ai and human need to find reinvent themself if even possible
+ - talking about AGI, superintelligence, ...
+ - taking it a little slower and start with the fundamentals.
+ - EU AI Act, some regulatories
+
+Where are we located during the lecture?
+
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.001.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
     background: transparent;
-    display: block;
-  }
-
-  .img-medium {
-    max-width: 100%;
-    max-height: 52vh;
-    width: 90%;
-    height: auto;
-    object-fit: contain;
-    margin: 0.25rem auto 0 auto;
-    background: transparent;
-    display: block;
-  }
-
-  .img-small {
-    max-width: 100%;
-    max-height: 44vh;
-    width: 70%;
-    height: auto;
-    object-fit: contain;
-    margin: 0.25rem auto 0 auto;
-    background: transparent;
-    display: block;
-  }
-
-  .img-tall {
-    max-width: 100%;
-    max-height: 66vh;
-    width: 75%;
-    height: auto;
-    object-fit: contain;
-    margin: 0.25rem auto 0 auto;
-    background: transparent;
-    display: block;
-  }
-
-  .two-col {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .two-col > div {
-    flex: 1;
-  }
-
-  .three-col {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .three-col > div {
-    flex: 1;
-  }
-
-  .box {
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    border-radius: 14px;
-    padding: 0.8rem 1rem;
-  }
-
-  .muted {
-    opacity: 0.85;
-  }
-
-  .tiny {
-    font-size: 0.6em;
-  }
-
-  .section {
-    text-align: center;
-    padding: 2.5rem 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    border-radius: 18px;
-  }
-
-  .section .kicker {
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-size: 0.65em;
-    opacity: 0.85;
-  }
-
-  .section .title {
-    margin-top: 0.6rem;
-    font-size: 1.55em;
-  }
-
-  .section .subtitle {
-    margin-top: 0.6rem;
-    font-size: 0.85em;
-    opacity: 0.85;
-  }
-
-  table.taskmap {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.82em;
-  }
-  table.taskmap th,
-  table.taskmap td {
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 0.35rem 0.5rem;
-    text-align: center;
-  }
-  table.taskmap th {
-    color: lightgreen;
-    font-weight: 600;
-  }
-  table.taskmap td:first-child {
-    text-align: left;
-    color: rgba(255, 255, 255, 0.92);
-    font-weight: 600;
-  }
-</style>
-
-<!-- ========================================================= -->
-<!-- 0) Opening -->
-<!-- ========================================================= -->
-
-### Agenda (90 min)
-
-- <span style="color: lightgreen;">Where AI comes from</span>: history as a story
-- <span style="color: lightgreen;">Foundations</span>: paradigms + representation + first algorithms
-- <span style="color: lightgreen;">Learning types</span> (5 buckets)
-- <span style="color: lightgreen;">Core task families</span> (what we solve)
-- <span style="color: lightgreen;">Why models work (or fail)</span>
-- <span style="color: lightgreen;">Classical ML toolbox</span>
-- <span style="color: lightgreen;">Deep learning essentials</span> (no transformers today)
-
-Note:
-- Format: visual-first slides; speaker notes contain the talk track + sources.
-- Thread: we’ll use a recurring BI/Data Science example — an e-commerce company (“ShopNow”).
+  "
+/>
 
 ---
 
-### Why AI matters (especially for BI)
+### <span style="color: lightgreen;"> Why does AI matter for BI? </span>
 
 <div class="two-col">
   <div>
     <img
       src="../assets/introduction_to_ai/imgs/ai_hero.jpg"
       alt="Artificial Intelligence illustration"
-      class="img-medium"
+      style="height: 30vh; width: auto; max-width: 100%"
     />
   </div>
+
+--
+
   <div class="box" style="text-align: left; font-size: 0.85em">
-    <div style="color: lightgreen; font-size: 0.95em">From dashboards to decisions</div>
+    <div style="color: lightgrey; font-size: 0.95em">From data to dashboards to decisions, e.g.</div>
     <ul class="muted" style="margin-top: 0.55rem">
       <li><span style="color: orange;">Prediction</span>: demand, churn, delivery delay</li>
       <li><span style="color: orange;">Detection</span>: fraud, anomalies, quality issues</li>
@@ -172,6 +47,23 @@ Note:
 - One message: BI becomes more valuable when it drives action, not only reporting.
 - ShopNow example: reduce chargebacks, keep inventory healthy, and improve search/recommendations.
 Source (image): https://commons.wikimedia.org/wiki/File:Artificial-Intelligence.jpg
+
+---
+
+### Agenda
+
+- <span style="color: lightgreen;">Where AI comes from</span>: a little history
+- <span style="color: lightgreen;">Foundations</span>: paradigms + representation + first algorithms
+- <span style="color: lightgreen;">Learning types</span> (5 buckets)
+- <span style="color: lightgreen;">Core task families</span> (what we solve)
+- <span style="color: lightgreen;">Why models work (or fail)</span>
+- <span style="color: lightgreen;">Classical ML toolbox</span>
+- <span style="color: lightgreen;">Deep learning essentials</span> (no transformers today)
+
+Note:
+- Format: visual-first slides; speaker notes contain the talk track + sources.
+- Thread: we’ll use a recurring BI/Data Science example — an e-commerce company (“ShopNow”).
+
 
 ---
 
