@@ -200,5 +200,19 @@ Source: https://commons.wikimedia.org/wiki/File:AI-History-Timeline-300dpi.jpg
 
 ---
 
+#### Classification of AI
+
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.007.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+---
+
 #### <span style="color: lightgreen;"> Try to describe your 3 historical breakthroughs in AI from the beginning of the lecture in more technical terms.</span>
 
