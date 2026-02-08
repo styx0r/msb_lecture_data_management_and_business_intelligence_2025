@@ -116,7 +116,87 @@ Source: https://commons.wikimedia.org/wiki/File:AI-History-Timeline-300dpi.jpg
 
 ---
 
-#### 
+#### Eras of AI
+
+--
+
+#### Era 1: Pre-Deep Learning (1950s-2010)
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.85em;">
+    <ul>
+      <li><span style="color: orange;">Context:</span> Dartmouth 1956, symbolic AI + early ML</li>
+      <li><span style="color: orange;">Moore's Law:</span> compute doubles ~every 20 months</li>
+      <li><span style="color: orange;">Focus:</span> rules, logic, expert systems, limited data</li>
+      <li><span style="color: orange;">AI winters:</span> 1970s and late 1980s funding cuts</li>
+    </ul>
+  </div>
+</div>
+
+--
+
+#### Moore's Law
+
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.005.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+#### Era 2: Deep Learning Era (2010-2015)
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.85em;">
+    <ul>
+      <li><span style="color: orange;">Context:</span> big data + GPUs + new NN techniques</li>
+      <li><span style="color: orange;">Acceleration:</span> compute use doubles ~every 6 months</li>
+      <li><span style="color: orange;">Focus:</span> image recognition and early NLP</li>
+      <li><span style="color: orange;">Milestones:</span> AlexNet (2012) and deep CNNs</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <svg width="360" height="220" viewBox="0 0 360 220" aria-label="Compute acceleration">
+      <rect x="0" y="0" width="360" height="220" fill="transparent"></rect>
+      <line x1="30" y1="185" x2="330" y2="185" stroke="#888" stroke-width="2"></line>
+      <line x1="30" y1="185" x2="30" y2="25" stroke="#888" stroke-width="2"></line>
+      <path d="M30 175 L80 150 L130 120 L180 85 L230 55 L280 35 L330 25" stroke="#ff6b6b" stroke-width="3" fill="none"></path>
+      <text x="34" y="205" fill="#aaa" font-size="12">2010</text>
+      <text x="292" y="205" fill="#aaa" font-size="12">2015</text>
+      <text x="40" y="40" fill="#aaa" font-size="12">Compute</text>
+      <text x="120" y="70" fill="#ff6b6b" font-size="12">~6 months</text>
+      <text x="120" y="85" fill="#ff6b6b" font-size="12">doubling</text>
+    </svg>
+    <div style="font-size: 0.6em; color: #aaa;">Training compute accelerates</div>
+  </div>
+</div>
+
+--
+
+#### Era 3: Large-Scale Era (2015-Present)
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.85em;">
+    <ul>
+      <li><span style="color: orange;">Context:</span> models 10-100x larger + massive datasets</li>
+      <li><span style="color: orange;">Focus:</span> foundation models, LLMs, advanced vision</li>
+      <li><span style="color: orange;">Shift:</span> deployment, alignment, agents (2025-2026)</li>      
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <img
+      src="../assets/introduction_to_ai/imgs/imgs.006.png"
+      alt="AI timeline"
+      style="width: 420px; max-width: 100%; height: auto; background: transparent;"
+    />
+    <div style="font-size: 0.6em; color: #aaa;">Modern AI timeline (context)</div>
+  </div>
+</div>
 
 ---
 
