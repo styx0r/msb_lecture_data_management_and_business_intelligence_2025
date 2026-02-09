@@ -345,7 +345,7 @@ Note:
 
 ---
 
-#### Supervised vs. Unsupervised: labels or not?
+#### Supervised vs. Unsupervised: in a nutshell
 
 <div style="display: flex; gap: 1.5rem; align-items: center; font-size: 0.9em;">
   <div style="flex: 1; border: 1px solid #666; border-radius: 12px; padding: 0.9rem;">
@@ -405,7 +405,7 @@ Note:
       <li><span style="color: orange;">Result:</span> best-fit line (training)</li>
     </ul>
     <div style="color: #aaa; font-size: 0.75em;">
-      If you want: add a 3-step animation of the line moving.
+      TODO: If you want: add a 3-step animation of the line moving.
     </div>
   </div>
   <div style="flex: 1;">
@@ -533,14 +533,14 @@ Note:
 
 ---
 
-#### k-means setup: find the segments
+#### <span style="color: lightgreen;">Assign customer groups to the data</span>
 
 <div style="display: flex; gap: 2rem; align-items: center;">
   <div style="flex: 1; text-align: left; font-size: 0.9em;">
     <ul>
-      <li><span style="color: orange;">Goal:</span> group customers into 3 segments.</li>
+      <li><span style="color: orange;">Given groups:</span> value seekers, loyalists, premium.</li>
       <li><span style="color: orange;">Features:</span> avg basket size (EUR), orders per month.</li>
-      <li><span style="color: orange;">Question:</span> how would you split this space?</li>
+      <li><span style="color: orange;">Your task:</span> assign groups to points and explain why.</li>
     </ul>
   </div>
   <div style="flex: 1;">
@@ -549,13 +549,10 @@ Note:
       alt="Customer points only"
       style="width: 420px; max-width: 100%; height: auto; background: transparent;"
     />
-    <div style="font-size: 0.65em; color: #aaa; text-align: center;">
-      x: avg basket size (EUR) · y: orders per month
-    </div>
   </div>
 </div>
 
----
+--
 
 #### k-means algorithm: clustering in motion
 
@@ -580,7 +577,7 @@ Note:
   </div>
 </div>
 
----
+--
 
 #### k-means result: actionable segments
 
