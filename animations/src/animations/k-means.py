@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 
 
 Point = Tuple[float, float]
+RENDER_DPI = 160
 
 
 def generate_centers(count: int, center_radius: float, seed: int = 7) -> List[Point]:
@@ -119,7 +120,35 @@ def render_frame(
 
     buf = BytesIO()
     fig.tight_layout()
-    fig.savefig(buf, format="png", dpi=120)
+    fig.savefig(buf, format="png", dpi=RENDER_DPI)
+    plt.close(fig)
+    buf.seek(0)
+    return Image.open(buf)
+
+
+def render_points_only(
+    points: List[Point],
+    figsize: Tuple[int, int],
+    xlabel: str,
+    ylabel: str,
+    xlim: Tuple[float, float],
+    ylim: Tuple[float, float],
+) -> Image.Image:
+    fig, ax = plt.subplots(figsize=figsize)
+    ax.set_title("k-means input data", fontsize=12)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.set_xlim(*xlim)
+    ax.set_ylim(*ylim)
+    ax.grid(alpha=0.2, linestyle="--")
+    ax.set_facecolor("white")
+
+    for x, y in points:
+        ax.scatter(x, y, s=18, color="#777777", alpha=0.7)
+
+    buf = BytesIO()
+    fig.tight_layout()
+    fig.savefig(buf, format="png", dpi=RENDER_DPI)
     plt.close(fig)
     buf.seek(0)
     return Image.open(buf)
@@ -141,7 +170,15 @@ def kmeans_gif(
     ylabel: str = "Feature 2",
     show_labels: bool = False,
     duration_ms: int = 500,
-) -> None:
+) -> Tuple[
+    List[Point],
+    List[int],
+    List[Point],
+    Tuple[float, float],
+    Tuple[float, float],
+    List[Point],
+    List[str],
+]:
     centers = true_centers or generate_centers(true_clusters, center_radius, seed=seed)
     points = generate_points(centers, points_per_cluster, spread, seed=seed)
     random.seed(seed)
@@ -189,6 +226,8 @@ def kmeans_gif(
         )
         centroids = recompute_centroids(points, assignments, centroids)
 
+    final_assignments = assign_clusters(points, centroids)
+
     if not frames:
         raise RuntimeError("No frames generated.")
 
@@ -201,15 +240,32 @@ def kmeans_gif(
         loop=0,
     )
 
+    return (
+        points,
+        final_assignments,
+        centroids,
+        xlim,
+        ylim,
+        centers,
+        colors,
+    )
+
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
-OUTPUT_PATH = (
+OUTPUT_GIF_PATH = (
     REPO_ROOT / "slides/assets/introduction_to_ai/animations/kmeans_segments.gif"
+)
+OUTPUT_INITIAL_PATH = (
+    REPO_ROOT
+    / "slides/assets/introduction_to_ai/animations/kmeans_segments_initial.png"
+)
+OUTPUT_FINAL_PATH = (
+    REPO_ROOT / "slides/assets/introduction_to_ai/animations/kmeans_segments_final.png"
 )
 K = 3
 TRUE_CLUSTERS = 3
 ITERATIONS = 20
-SEED = 42
+SEED = 23
 POINTS_PER_CLUSTER = 80
 SPREAD = (18.0, 1.6)
 CENTER_RADIUS = 3.0
@@ -224,8 +280,16 @@ TRUE_CENTERS = [
     (160, 6),  # Premium: high basket, medium frequency
 ]
 
-kmeans_gif(
-    output_path=OUTPUT_PATH,
+(
+    points,
+    final_assignments,
+    centroids,
+    xlim,
+    ylim,
+    centers,
+    colors,
+) = kmeans_gif(
+    output_path=OUTPUT_GIF_PATH,
     k=K,
     true_clusters=TRUE_CLUSTERS,
     iterations=ITERATIONS,
@@ -241,3 +305,28 @@ kmeans_gif(
     show_labels=False,
     duration_ms=DURATION_MS,
 )
+
+render_points_only(
+    points=points,
+    figsize=(4, 3),
+    xlabel=FEATURE_X_LABEL,
+    ylabel=FEATURE_Y_LABEL,
+    xlim=xlim,
+    ylim=ylim,
+).save(OUTPUT_INITIAL_PATH)
+
+render_frame(
+    points=points,
+    assignments=final_assignments,
+    centroids=centroids,
+    iteration=ITERATIONS,
+    colors=colors,
+    figsize=(4, 3),
+    xlabel=FEATURE_X_LABEL,
+    ylabel=FEATURE_Y_LABEL,
+    xlim=xlim,
+    ylim=ylim,
+    true_centers=centers,
+    cluster_names=CLUSTER_NAMES,
+    show_labels=True,
+).save(OUTPUT_FINAL_PATH)
