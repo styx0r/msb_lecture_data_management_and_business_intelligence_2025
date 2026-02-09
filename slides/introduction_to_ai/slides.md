@@ -538,25 +538,19 @@ Note:
 <div style="display: flex; gap: 2rem; align-items: center;">
   <div style="flex: 1; text-align: left; font-size: 0.9em;">
     <ul>
-      <li><span style="color: orange;">Features:</span> frequency, basket size, returns.</li>
+      <li><span style="color: orange;">Features:</span> avg basket size (EUR), orders per month.</li>
       <li><span style="color: orange;">Clusters:</span> value seekers, loyalists, premium.</li>
       <li><span style="color: orange;">Action:</span> tailor offers per segment.</li>
     </ul>
   </div>
   <div style="flex: 1;">
-    <div
-      style="
-        border: 2px dashed #666;
-        border-radius: 10px;
-        height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #aaa;
-        font-size: 0.75em;
-      "
-    >
-      Optional: insert a segmentation chart
+    <img
+      src="../assets/introduction_to_ai/animations/kmeans_segments.gif"
+      alt="K-means customer segments"
+      style="width: 420px; max-width: 100%; height: auto; background: transparent;"
+    />
+    <div style="font-size: 0.65em; color: #aaa; text-align: center;">
+      x: avg basket size (EUR) · y: orders per month
     </div>
   </div>
 </div>

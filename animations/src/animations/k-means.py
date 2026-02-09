@@ -29,14 +29,18 @@ def generate_centers(count: int, center_radius: float, seed: int = 7) -> List[Po
 def generate_points(
     centers: Iterable[Point],
     points_per_cluster: int = 60,
-    spread: float = 0.8,
+    spread: float | Tuple[float, float] = 0.8,
     seed: int = 7,
 ) -> List[Point]:
     random.seed(seed)
+    if isinstance(spread, tuple):
+        spread_x, spread_y = spread
+    else:
+        spread_x, spread_y = spread, spread
     points: List[Point] = []
     for cx, cy in centers:
         for _ in range(points_per_cluster):
-            points.append((random.gauss(cx, spread), random.gauss(cy, spread)))
+            points.append((random.gauss(cx, spread_x), random.gauss(cy, spread_y)))
     return points
 
 
@@ -75,11 +79,21 @@ def render_frame(
     iteration: int,
     colors: List[str],
     figsize: Tuple[int, int],
+    xlabel: str,
+    ylabel: str,
+    xlim: Tuple[float, float],
+    ylim: Tuple[float, float],
+    true_centers: List[Point] | None = None,
+    cluster_names: List[str] | None = None,
+    show_labels: bool = False,
 ) -> Image.Image:
     fig, ax = plt.subplots(figsize=figsize)
     ax.set_title(f"k-means iteration {iteration}", fontsize=12)
-    ax.set_xticks([])
-    ax.set_yticks([])
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.set_xlim(*xlim)
+    ax.set_ylim(*ylim)
+    ax.grid(alpha=0.2, linestyle="--")
     ax.set_facecolor("white")
 
     for i, (x, y) in enumerate(points):
@@ -89,6 +103,19 @@ def render_frame(
         ax.scatter(
             cx, cy, marker="X", s=120, color=colors[i % len(colors)], edgecolor="black"
         )
+        if show_labels and true_centers and cluster_names:
+            nearest = min(
+                range(len(true_centers)),
+                key=lambda idx: (cx - true_centers[idx][0]) ** 2
+                + (cy - true_centers[idx][1]) ** 2,
+            )
+            ax.text(
+                cx + 0.2,
+                cy + 0.2,
+                cluster_names[nearest],
+                fontsize=9,
+                color=colors[i % len(colors)],
+            )
 
     buf = BytesIO()
     fig.tight_layout()
@@ -105,15 +132,22 @@ def kmeans_gif(
     iterations: int = 8,
     seed: int = 7,
     points_per_cluster: int = 60,
-    spread: float = 0.8,
+    spread: float | Tuple[float, float] = 0.8,
     center_radius: float = 4.0,
     init_mode: str = "random",
+    true_centers: List[Point] | None = None,
+    cluster_names: List[str] | None = None,
+    xlabel: str = "Feature 1",
+    ylabel: str = "Feature 2",
+    show_labels: bool = False,
     duration_ms: int = 500,
 ) -> None:
-    centers = generate_centers(true_clusters, center_radius, seed=seed)
+    centers = true_centers or generate_centers(true_clusters, center_radius, seed=seed)
     points = generate_points(centers, points_per_cluster, spread, seed=seed)
     random.seed(seed)
-    if init_mode == "sample":
+    if init_mode == "expected" and true_centers:
+        centroids = true_centers[:k]
+    elif init_mode == "sample":
         centroids = random.sample(points, k)
     else:
         all_x = [p[0] for p in points]
@@ -126,11 +160,32 @@ def kmeans_gif(
         ]
     colors = ["#55c2ff", "#ff6b6b", "#8bdc65", "#f1c453", "#9b59b6"]
 
+    min_x, max_x = min(p[0] for p in points), max(p[0] for p in points)
+    min_y, max_y = min(p[1] for p in points), max(p[1] for p in points)
+    pad_x = (max_x - min_x) * 0.15 or 1
+    pad_y = (max_y - min_y) * 0.15 or 1
+    xlim = (min_x - pad_x, max_x + pad_x)
+    ylim = (min_y - pad_y, max_y + pad_y)
+
     frames: List[Image.Image] = []
     for iteration in range(1, iterations + 1):
         assignments = assign_clusters(points, centroids)
         frames.append(
-            render_frame(points, assignments, centroids, iteration, colors, (4, 3))
+            render_frame(
+                points,
+                assignments,
+                centroids,
+                iteration,
+                colors,
+                (4, 3),
+                xlabel,
+                ylabel,
+                xlim,
+                ylim,
+                true_centers=centers,
+                cluster_names=cluster_names,
+                show_labels=show_labels,
+            )
         )
         centroids = recompute_centroids(points, assignments, centroids)
 
@@ -147,16 +202,27 @@ def kmeans_gif(
     )
 
 
-OUTPUT_PATH = Path("kmeans5-5.gif")
-K = 5
-TRUE_CLUSTERS = 5
-ITERATIONS = 10
-SEED = 23
-POINTS_PER_CLUSTER = 70
-SPREAD = 0.2
+REPO_ROOT = Path(__file__).resolve().parents[3]
+OUTPUT_PATH = (
+    REPO_ROOT / "slides/assets/introduction_to_ai/animations/kmeans_segments.gif"
+)
+K = 3
+TRUE_CLUSTERS = 3
+ITERATIONS = 20
+SEED = 42
+POINTS_PER_CLUSTER = 80
+SPREAD = (18.0, 1.6)
 CENTER_RADIUS = 3.0
-INIT_MODE = "random"  # "random" or "sample"
-DURATION_MS = 1600
+INIT_MODE = "random"  # "expected", "random", or "sample"
+DURATION_MS = 1000
+FEATURE_X_LABEL = "Avg basket size (EUR)"
+FEATURE_Y_LABEL = "Orders per month"
+CLUSTER_NAMES = ["Value seekers", "Loyalists", "Premium"]
+TRUE_CENTERS = [
+    (40, 4),  # Value seekers: low basket, low frequency
+    (85, 10),  # Loyalists: mid basket, high frequency
+    (160, 6),  # Premium: high basket, medium frequency
+]
 
 kmeans_gif(
     output_path=OUTPUT_PATH,
@@ -168,5 +234,10 @@ kmeans_gif(
     spread=SPREAD,
     center_radius=CENTER_RADIUS,
     init_mode=INIT_MODE,
+    true_centers=TRUE_CENTERS,
+    cluster_names=CLUSTER_NAMES,
+    xlabel=FEATURE_X_LABEL,
+    ylabel=FEATURE_Y_LABEL,
+    show_labels=False,
     duration_ms=DURATION_MS,
 )
