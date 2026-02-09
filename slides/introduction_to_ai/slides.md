@@ -318,7 +318,7 @@ Note:
   </tr>
 </table>
 
----
+--
 
 #### <span style="color: lightgreen;">Quick reference cards</span>
 
@@ -340,6 +340,224 @@ Note:
     <div>Learn by rewards</div>
     <div>Examples: pricing, routing</div>
     <div>Algorithms: Q-learning, policy gradient</div>
+  </div>
+</div>
+
+---
+
+#### Supervised vs. Unsupervised: labels or not?
+
+<div style="display: flex; gap: 1.5rem; align-items: center; font-size: 0.9em;">
+  <div style="flex: 1; border: 1px solid #666; border-radius: 12px; padding: 0.9rem;">
+    <div style="color: orange; font-weight: bold;">Supervised learning</div>
+    <div>Inputs <span style="color: orange;">x</span> + labels <span style="color: orange;">y</span></div>
+    <div>Goal: predict <span style="color: orange;">y</span> for new x</div>
+    <div>Examples: churn, fraud, demand</div>
+  </div>
+  <div style="flex: 1; border: 1px solid #666; border-radius: 12px; padding: 0.9rem;">
+    <div style="color: orange; font-weight: bold;">Unsupervised learning</div>
+    <div>Inputs <span style="color: orange;">x</span> only (no labels)</div>
+    <div>Goal: discover structure or clusters</div>
+    <div>Examples: segmentation, anomalies</div>
+  </div>
+</div>
+
+---
+
+#### Supervised learning: regression first
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <div><span style="color: orange;">Use case:</span> predict delivery time or demand.</div>
+    <ul>
+      <li><span style="color: orange;">Inputs (x):</span> distance, traffic, basket size.</li>
+      <li><span style="color: orange;">Target (y):</span> delivery time (minutes).</li>
+      <li><span style="color: orange;">Output:</span> a number.</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <svg width="380" height="240" viewBox="0 0 380 240" aria-label="Regression line">
+      <line x1="40" y1="200" x2="340" y2="200" stroke="#777" stroke-width="2"></line>
+      <line x1="40" y1="200" x2="40" y2="30" stroke="#777" stroke-width="2"></line>
+      <circle cx="80" cy="160" r="5" fill="#55c2ff"></circle>
+      <circle cx="110" cy="150" r="5" fill="#55c2ff"></circle>
+      <circle cx="140" cy="145" r="5" fill="#55c2ff"></circle>
+      <circle cx="170" cy="130" r="5" fill="#55c2ff"></circle>
+      <circle cx="200" cy="120" r="5" fill="#55c2ff"></circle>
+      <circle cx="230" cy="110" r="5" fill="#55c2ff"></circle>
+      <circle cx="260" cy="95" r="5" fill="#55c2ff"></circle>
+      <path d="M70 170 Q170 130 300 80" stroke="#ffa500" stroke-width="3" fill="none"></path>
+      <text x="250" y="75" fill="#ffa500" font-size="12">prediction</text>
+    </svg>
+  </div>
+</div>
+
+---
+
+#### Training phase: learn the parameters
+
+<div style="display: flex; gap: 1.5rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <ul>
+      <li><span style="color: orange;">Model:</span> y = w1 * x + b</li>
+      <li><span style="color: orange;">Loss:</span> how wrong are we?</li>
+      <li><span style="color: orange;">Update:</span> adjust w, b to reduce loss</li>
+      <li><span style="color: orange;">Result:</span> best-fit line (training)</li>
+    </ul>
+    <div style="color: #aaa; font-size: 0.75em;">
+      If you want: add a 3-step animation of the line moving.
+    </div>
+  </div>
+  <div style="flex: 1;">
+    <svg width="380" height="220" viewBox="0 0 380 220" aria-label="Parameter updates">
+      <line x1="40" y1="180" x2="340" y2="180" stroke="#777" stroke-width="2"></line>
+      <line x1="40" y1="180" x2="40" y2="30" stroke="#777" stroke-width="2"></line>
+      <path d="M70 160 Q170 140 300 110" stroke="#888" stroke-width="2" fill="none"></path>
+      <path d="M70 170 Q170 130 300 80" stroke="#ffa500" stroke-width="3" fill="none"></path>
+      <path d="M70 150 Q170 110 300 60" stroke="#55c2ff" stroke-width="2" fill="none"></path>
+      <text x="250" y="105" fill="#888" font-size="11">step 1</text>
+      <text x="250" y="75" fill="#ffa500" font-size="11">step 2</text>
+      <text x="250" y="55" fill="#55c2ff" font-size="11">step 3</text>
+    </svg>
+  </div>
+</div>
+
+---
+
+#### Regression example: demand forecasting
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <ul>
+      <li><span style="color: orange;">Data:</span> past sales, price, promotions, season.</li>
+      <li><span style="color: orange;">Model:</span> linear regression.</li>
+      <li><span style="color: orange;">Prediction:</span> units sold next week.</li>
+      <li><span style="color: orange;">Use:</span> inventory planning.</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <svg width="380" height="220" viewBox="0 0 380 220" aria-label="Forecast line">
+      <line x1="40" y1="180" x2="340" y2="180" stroke="#777" stroke-width="2"></line>
+      <line x1="40" y1="180" x2="40" y2="30" stroke="#777" stroke-width="2"></line>
+      <path d="M50 160 L90 140 L130 150 L170 120 L210 130 L250 110 L290 100" stroke="#55c2ff" stroke-width="2" fill="none"></path>
+      <path d="M290 100 L330 90" stroke="#ffa500" stroke-width="3" fill="none"></path>
+      <text x="290" y="85" fill="#ffa500" font-size="12">forecast</text>
+    </svg>
+  </div>
+</div>
+
+---
+
+#### Classification example: neural network classifier
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <div><span style="color: orange;">Task:</span> classify orders as fraud or not.</div>
+    <ul>
+      <li><span style="color: orange;">Inputs:</span> features (device, value, time).</li>
+      <li><span style="color: orange;">Output:</span> class probability.</li>
+      <li><span style="color: orange;">Model:</span> neural network.</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <div
+      style="
+        border: 2px dashed #666;
+        border-radius: 10px;
+        height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #aaa;
+        font-size: 0.75em;
+      "
+    >
+      Insert your neural network classification image here
+    </div>
+  </div>
+</div>
+
+---
+
+#### Unsupervised learning: k-means clustering
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <div><span style="color: orange;">Idea:</span> group similar points without labels.</div>
+    <ul>
+      <li><span style="color: orange;">Input:</span> customer features only.</li>
+      <li><span style="color: orange;">Output:</span> cluster assignment.</li>
+      <li><span style="color: orange;">Use:</span> segmentation.</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <svg width="380" height="230" viewBox="0 0 380 230" aria-label="K-means clusters">
+      <circle cx="110" cy="150" r="7" fill="#55c2ff"></circle>
+      <circle cx="95" cy="130" r="7" fill="#55c2ff"></circle>
+      <circle cx="125" cy="135" r="7" fill="#55c2ff"></circle>
+      <circle cx="260" cy="110" r="7" fill="#ff6b6b"></circle>
+      <circle cx="240" cy="90" r="7" fill="#ff6b6b"></circle>
+      <circle cx="280" cy="90" r="7" fill="#ff6b6b"></circle>
+      <circle cx="200" cy="190" r="7" fill="#8bdc65"></circle>
+      <circle cx="180" cy="170" r="7" fill="#8bdc65"></circle>
+      <circle cx="210" cy="165" r="7" fill="#8bdc65"></circle>
+      <circle cx="160" cy="70" r="7" fill="#f1c453"></circle>
+      <circle cx="180" cy="55" r="7" fill="#f1c453"></circle>
+      <circle cx="200" cy="75" r="7" fill="#f1c453"></circle>
+    </svg>
+  </div>
+</div>
+
+---
+
+#### k-means: step-by-step
+
+<div style="display: flex; gap: 1rem; font-size: 0.85em;">
+  <div style="flex: 1; border: 1px solid #666; border-radius: 10px; padding: 0.7rem;">
+    <div style="color: orange; font-weight: bold;">1) Initialize</div>
+    <div>Pick k starting centroids</div>
+  </div>
+  <div style="flex: 1; border: 1px solid #666; border-radius: 10px; padding: 0.7rem;">
+    <div style="color: orange; font-weight: bold;">2) Assign</div>
+    <div>Attach points to nearest centroid</div>
+  </div>
+  <div style="flex: 1; border: 1px solid #666; border-radius: 10px; padding: 0.7rem;">
+    <div style="color: orange; font-weight: bold;">3) Update</div>
+    <div>Move centroids to the mean</div>
+  </div>
+  <div style="flex: 1; border: 1px solid #666; border-radius: 10px; padding: 0.7rem;">
+    <div style="color: orange; font-weight: bold;">Repeat</div>
+    <div>Until centroids stop moving</div>
+  </div>
+</div>
+
+---
+
+#### k-means example: customer segments
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <ul>
+      <li><span style="color: orange;">Features:</span> frequency, basket size, returns.</li>
+      <li><span style="color: orange;">Clusters:</span> value seekers, loyalists, premium.</li>
+      <li><span style="color: orange;">Action:</span> tailor offers per segment.</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <div
+      style="
+        border: 2px dashed #666;
+        border-radius: 10px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #aaa;
+        font-size: 0.75em;
+      "
+    >
+      Optional: insert a segmentation chart
+    </div>
   </div>
 </div>
 
