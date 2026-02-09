@@ -115,7 +115,7 @@ def render_frame(
                 cy + 0.2,
                 cluster_names[nearest],
                 fontsize=9,
-                color=colors[i % len(colors)],
+                color="black",
             )
 
     buf = BytesIO()
