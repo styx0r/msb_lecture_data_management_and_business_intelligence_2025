@@ -533,20 +533,68 @@ Note:
 
 ---
 
-#### k-means example: customer segments
+#### k-means setup: find the segments
 
 <div style="display: flex; gap: 2rem; align-items: center;">
   <div style="flex: 1; text-align: left; font-size: 0.9em;">
     <ul>
+      <li><span style="color: orange;">Goal:</span> group customers into 3 segments.</li>
       <li><span style="color: orange;">Features:</span> avg basket size (EUR), orders per month.</li>
+      <li><span style="color: orange;">Question:</span> how would you split this space?</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <img
+      src="../assets/introduction_to_ai/animations/kmeans_segments_initial.png"
+      alt="Customer points only"
+      style="width: 420px; max-width: 100%; height: auto; background: transparent;"
+    />
+    <div style="font-size: 0.65em; color: #aaa; text-align: center;">
+      x: avg basket size (EUR) · y: orders per month
+    </div>
+  </div>
+</div>
+
+---
+
+#### k-means algorithm: clustering in motion
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <ul>
+      <li><span style="color: orange;">Step 1:</span> initialize k centroids.</li>
+      <li><span style="color: orange;">Step 2:</span> assign points to nearest centroid.</li>
+      <li><span style="color: orange;">Step 3:</span> move centroids to the mean.</li>
+      <li><span style="color: orange;">Repeat:</span> until stable.</li>
+    </ul>
+  </div>
+  <div style="flex: 1;">
+    <img
+      src="../assets/introduction_to_ai/animations/kmeans_segments.gif"
+      alt="K-means clustering animation"
+      style="width: 420px; max-width: 100%; height: auto; background: transparent;"
+    />
+    <div style="font-size: 0.65em; color: #aaa; text-align: center;">
+      x: avg basket size (EUR) · y: orders per month
+    </div>
+  </div>
+</div>
+
+---
+
+#### k-means result: actionable segments
+
+<div style="display: flex; gap: 2rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <ul>
       <li><span style="color: orange;">Clusters:</span> value seekers, loyalists, premium.</li>
       <li><span style="color: orange;">Action:</span> tailor offers per segment.</li>
     </ul>
   </div>
   <div style="flex: 1;">
     <img
-      src="../assets/introduction_to_ai/animations/kmeans_segments.gif"
-      alt="K-means customer segments"
+      src="../assets/introduction_to_ai/animations/kmeans_segments_final.png"
+      alt="K-means customer segments with labels"
       style="width: 420px; max-width: 100%; height: auto; background: transparent;"
     />
     <div style="font-size: 0.65em; color: #aaa; text-align: center;">
