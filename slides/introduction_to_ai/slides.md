@@ -282,5 +282,68 @@ Note:
 
 ---
 
+#### <span style="color: lightgreen;">Mini-talk: learning paradigms</span>
+
+- Form 6 groups: 3 <span style="color: orange;">presenters</span> + 3 <span style="color: orange;">challenge teams</span>
+- Topics: <span style="color: orange;">supervised</span>, <span style="color: orange;">unsupervised</span>, <span style="color: orange;">reinforcement</span> (each has a presenter + challenger)
+- ~25-30 min prep, ~5 min talk + ~3 min Q&A per topic
+- Must include: <span style="color: orange;">data</span>, <span style="color: orange;">algorithm</span>, <span style="color: orange;">prediction/output</span>
+- Provide one concrete example
+- Prep on slides, Miro board, or similar
+
+--
+
+#### <span style="color: lightgreen;">Your example template</span>
+
+<table style="width: 80%; margin: 0 auto; font-size: 0.85em;">
+  <tr>
+    <th style="text-align: left; width: 25%;">Step</th>
+    <th style="text-align: left;">What you answer</th>
+  </tr>
+  <tr>
+    <td>Problem</td>
+    <td>What are we trying to predict/optimize?</td>
+  </tr>
+  <tr>
+    <td>Data</td>
+    <td>What inputs do we have? Are there labels?</td>
+  </tr>
+  <tr>
+    <td>Algorithm</td>
+    <td>Which method would you use (name 1)?</td>
+  </tr>
+  <tr>
+    <td>Prediction</td>
+    <td>What is the model output?</td>
+  </tr>
+</table>
+
+---
+
+#### <span style="color: lightgreen;">Quick reference cards</span>
+
+<div style="display: flex; gap: 1.5rem; text-align: left; font-size: 0.8em;">
+  <div style="flex: 1; border: 1px solid #666; border-radius: 10px; padding: 0.7rem;">
+    <div style="color: orange; font-weight: bold;">Supervised learning</div>
+    <div>Labels available (y)</div>
+    <div>Examples: churn, fraud, demand</div>
+    <div>Algorithms: linear/logistic reg., trees</div>
+  </div>
+  <div style="flex: 1; border: 1px solid #666; border-radius: 10px; padding: 0.7rem;">
+    <div style="color: orange; font-weight: bold;">Unsupervised learning</div>
+    <div>No labels, find structure</div>
+    <div>Examples: segmentation, anomalies</div>
+    <div>Algorithms: k-means, PCA</div>
+  </div>
+  <div style="flex: 1; border: 1px solid #666; border-radius: 10px; padding: 0.7rem;">
+    <div style="color: orange; font-weight: bold;">Reinforcement learning</div>
+    <div>Learn by rewards</div>
+    <div>Examples: pricing, routing</div>
+    <div>Algorithms: Q-learning, policy gradient</div>
+  </div>
+</div>
+
+---
+
 #### <span style="color: lightgreen;"> Try to describe your 3 historical breakthroughs in AI from the beginning of the lecture in more technical terms.</span>
 
