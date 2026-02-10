@@ -284,9 +284,9 @@ Note:
 
 #### <span style="color: lightgreen;">Mini-talk: learning paradigms</span>
 
-- Form 6 groups: 3 <span style="color: orange;">presenters</span> + 3 <span style="color: orange;">challenge teams</span>
-- Topics: <span style="color: orange;">supervised</span>, <span style="color: orange;">unsupervised</span>, <span style="color: orange;">reinforcement</span> (each has a presenter + challenger)
-- ~25-30 min prep, ~5 min talk + ~3 min Q&A per topic
+- Form 3 groups
+- Topics: <span style="color: orange;">supervised</span>, <span style="color: orange;">unsupervised</span>, <span style="color: orange;">reinforcement</span>
+- ~60 min prep, ~5-10 min talk + ~5 min Q&A per topic
 - Must include: <span style="color: orange;">data</span>, <span style="color: orange;">algorithm</span>, <span style="color: orange;">prediction/output</span>
 - Provide one concrete example
 - Prep on slides, Miro board, or similar
@@ -409,16 +409,11 @@ Note:
     </div>
   </div>
   <div style="flex: 1;">
-    <svg width="380" height="220" viewBox="0 0 380 220" aria-label="Parameter updates">
-      <line x1="40" y1="180" x2="340" y2="180" stroke="#777" stroke-width="2"></line>
-      <line x1="40" y1="180" x2="40" y2="30" stroke="#777" stroke-width="2"></line>
-      <path d="M70 160 Q170 140 300 110" stroke="#888" stroke-width="2" fill="none"></path>
-      <path d="M70 170 Q170 130 300 80" stroke="#ffa500" stroke-width="3" fill="none"></path>
-      <path d="M70 150 Q170 110 300 60" stroke="#55c2ff" stroke-width="2" fill="none"></path>
-      <text x="250" y="105" fill="#888" font-size="11">step 1</text>
-      <text x="250" y="75" fill="#ffa500" font-size="11">step 2</text>
-      <text x="250" y="55" fill="#55c2ff" font-size="11">step 3</text>
-    </svg>
+    <img
+      src="../assets/introduction_to_ai/animations/regression_gd.gif"
+      alt="K-means clustering animation"
+      style="width: 420px; max-width: 100%; height: auto; background: transparent;"
+    />
   </div>
 </div>
 
@@ -571,9 +566,6 @@ Note:
       alt="K-means clustering animation"
       style="width: 420px; max-width: 100%; height: auto; background: transparent;"
     />
-    <div style="font-size: 0.65em; color: #aaa; text-align: center;">
-      x: avg basket size (EUR) · y: orders per month
-    </div>
   </div>
 </div>
 
@@ -594,9 +586,6 @@ Note:
       alt="K-means customer segments with labels"
       style="width: 420px; max-width: 100%; height: auto; background: transparent;"
     />
-    <div style="font-size: 0.65em; color: #aaa; text-align: center;">
-      x: avg basket size (EUR) · y: orders per month
-    </div>
   </div>
 </div>
 
