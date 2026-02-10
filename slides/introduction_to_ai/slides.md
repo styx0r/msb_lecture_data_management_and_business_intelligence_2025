@@ -364,7 +364,7 @@ Note:
 
 ---
 
-#### Supervised learning: regression first
+#### Supervised learning: regression
 
 <div style="display: flex; gap: 2rem; align-items: center;">
   <div style="flex: 1; text-align: left; font-size: 0.9em;">
@@ -399,14 +399,11 @@ Note:
 <div style="display: flex; gap: 1.5rem; align-items: center;">
   <div style="flex: 1; text-align: left; font-size: 0.9em;">
     <ul>
-      <li><span style="color: orange;">Model:</span> y = w1 * x + b</li>
+      <li><span style="color: orange;">Model:</span> \( y = w_1 x + b \)</li>
       <li><span style="color: orange;">Loss:</span> how wrong are we?</li>
       <li><span style="color: orange;">Update:</span> adjust w, b to reduce loss</li>
       <li><span style="color: orange;">Result:</span> best-fit line (training)</li>
     </ul>
-    <div style="color: #aaa; font-size: 0.75em;">
-      TODO: If you want: add a 3-step animation of the line moving.
-    </div>
   </div>
   <div style="flex: 1;">
     <img
@@ -414,6 +411,101 @@ Note:
       alt="K-means clustering animation"
       style="width: 420px; max-width: 100%; height: auto; background: transparent;"
     />
+  </div>
+</div>
+
+--
+
+#### Training step 1: define the loss
+
+<div style="display: flex; gap: 1.5rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <ul>
+      <li><span style="color: orange;">Prediction:</span> \( \hat{y} = w_1 x + b \)</li>
+      <li><span style="color: orange;">Error:</span> \( e = \hat{y} - y \)</li>
+      <li><span style="color: orange;">Loss:</span> mean squared error (MSE)</li>
+    </ul>
+  </div>
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <div style="border: 1px solid #666; border-radius: 10px; padding: 0.8rem;">
+      \( L = \frac{1}{n}\sum_{i=1}^{n} (\hat{y}_i - y_i)^2 \)
+    </div>
+    <div style="color: #aaa; font-size: 0.75em; margin-top: 0.4rem;">
+      Goal: minimize loss.
+    </div>
+  </div>
+</div>
+
+--
+
+#### Training step 2: compute the gradients
+
+<div style="display: flex; gap: 1.5rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <ul>
+      <li><span style="color: orange;">Gradient:</span> how loss changes with w1, b</li>
+      <li><span style="color: orange;">Direction:</span> move opposite the gradient</li>
+      <li><span style="color: orange;">Step size:</span> learning rate \( \eta \)</li>
+    </ul>
+  </div>
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <div style="border: 1px solid #666; border-radius: 10px; padding: 0.8rem;">
+      \( w_1 \leftarrow w_1 - \eta \frac{\partial L}{\partial w_1} \)<br />
+      \( b \leftarrow b - \eta \frac{\partial L}{\partial b} \)
+    </div>
+  </div>
+</div>
+
+--
+
+#### Training step 2b: gradient for \( w_1 \)
+
+<div style="text-align: left; font-size: 0.9em;">
+  <ul>
+    <li><span style="color: orange;">Start:</span> \( \hat{y}_i = w_1 x_i + b \), \( e_i = \hat{y}_i - y_i \)</li>
+    <li><span style="color: orange;">Loss:</span> \( L = \frac{1}{n}\sum_{i=1}^{n} e_i^2 \)</li>
+    <li><span style="color: orange;">Step 1:</span> \( L = \frac{1}{n}\sum e_i^2 \Rightarrow \frac{\partial L}{\partial w_1} = \frac{1}{n}\sum \frac{\partial (e_i^2)}{\partial w_1} \)</li>
+    <li><span style="color: orange;">Why:</span> derivative of a sum is the sum of derivatives; \( \tfrac{1}{n} \) is a constant.</li>
+    <li><span style="color: orange;">Step 2:</span> (per-sample) \( \frac{\partial (e_i^2)}{\partial w_1} = 2e_i \frac{\partial e_i}{\partial w_1} \)</li>
+    <li><span style="color: orange;">Step 3:</span> \( e_i = w_1 x_i + b - y_i \)</li>
+    <li><span style="color: orange;">Step 4:</span> \( \frac{\partial e_i}{\partial w_1} = x_i \)</li>
+    <li><span style="color: orange;">Result:</span> \( \frac{\partial L}{\partial w_1} = \frac{2}{n}\sum e_i x_i \)</li>
+  </ul>
+</div>
+
+--
+
+#### Training step 2c: gradient for \( b \)
+
+<div style="text-align: left; font-size: 0.9em;">
+  <ul>
+    <li><span style="color: orange;">Start:</span> \( \hat{y}_i = w_1 x_i + b \), \( e_i = \hat{y}_i - y_i \)</li>
+    <li><span style="color: orange;">Loss:</span> \( L = \frac{1}{n}\sum_{i=1}^{n} e_i^2 \)</li>
+    <li><span style="color: orange;">Step 1:</span> \( L = \frac{1}{n}\sum e_i^2 \Rightarrow \frac{\partial L}{\partial b} = \frac{1}{n}\sum \frac{\partial (e_i^2)}{\partial b} \)</li>
+    <li><span style="color: orange;">Why:</span> derivative of a sum is the sum of derivatives; \( \tfrac{1}{n} \) is a constant.</li>
+    <li><span style="color: orange;">Step 2:</span> (per-sample) \( \frac{\partial (e_i^2)}{\partial b} = 2e_i \frac{\partial e_i}{\partial b} \)</li>
+    <li><span style="color: orange;">Step 3:</span> \( e_i = w_1 x_i + b - y_i \)</li>
+    <li><span style="color: orange;">Step 4:</span> \( \frac{\partial e_i}{\partial b} = 1 \)</li>
+    <li><span style="color: orange;">Result:</span> \( \frac{\partial L}{\partial b} = \frac{2}{n}\sum e_i \)</li>
+  </ul>
+</div>
+
+--
+
+#### Training step 3: iterate until stable
+
+<div style="display: flex; gap: 1.5rem; align-items: center;">
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <ul>
+      <li><span style="color: orange;">Repeat:</span> predict → loss → update</li>
+      <li><span style="color: orange;">Converge:</span> line stops moving</li>
+      <li><span style="color: orange;">Result:</span> best-fit parameters</li>
+    </ul>
+  </div>
+  <div style="flex: 1; text-align: left; font-size: 0.9em;">
+    <div style="border: 1px solid #666; border-radius: 10px; padding: 0.8rem;">
+      Stop when loss stops improving.
+    </div>
   </div>
 </div>
 
@@ -588,6 +680,15 @@ Note:
     />
   </div>
 </div>
+
+---
+
+What we learned:
+
+ - models
+ - training
+ - prediction
+ - TODO
 
 ---
 
