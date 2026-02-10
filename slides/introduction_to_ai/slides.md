@@ -683,12 +683,17 @@ Note:
 
 ---
 
-What we learned:
+#### Reinforcement learning (concept)
 
- - models
- - training
- - prediction
- - TODO
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.009.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
 
 ---
 
