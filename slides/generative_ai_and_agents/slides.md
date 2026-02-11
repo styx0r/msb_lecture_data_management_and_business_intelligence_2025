@@ -42,4 +42,17 @@ What is a generative model?
 
 ---
 
+Large Language MOdels
+
+---
+
+Agents
+
+- MCP
+- ReACT
+- Deep Agent
+- Tools
+
+---
+
 

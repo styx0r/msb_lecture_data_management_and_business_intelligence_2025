@@ -276,7 +276,7 @@ Remember: no free lunch theorem
 We need an auxiliary table, which
 
 1. needs to be kept up to date (so inserts and updates might take a little more time)
-2. which costs storage capacity
+2. costs storage capacity
 
 <!-- --
 
@@ -1013,3 +1013,9 @@ The choice depends on <span style="color: orange;">usecases</span>:
 - Is my data dense?
 - Do I need strong ACID criterias?
 - ...
+
+---
+
+Congratulations, you are a database expert ... almost ;)
+
+---

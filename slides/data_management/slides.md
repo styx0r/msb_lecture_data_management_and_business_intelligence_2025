@@ -158,20 +158,20 @@ What makes a good <span style="color: orange;">ETL</span> process?
 
 <span style="color: orange;">Pros</span>
 
-<!-- - high flexibility, agility and no limits regarding
+- high flexibility, agility and no limits regarding
   - data format structure
   - type of data
   - amount of data
-- typically low costs on storage size (roughly ranges from $0.01 to $0.025 / GB / month) -->
+- typically low costs on storage size (roughly ranges from $0.01 to $0.025 / GB / month)
 
 --
 
 <span style="color: orange;">Cons</span>
 
-<!-- - higher costs on processing the data (no free lunch)
+- higher costs on processing the data (no free lunch)
 - lack of structure, therefore lack of transparency: risk of becoming a data swamp
 - security challenges: might be challenging to identify security threats because of vast amount of data in vast amount of formats
-- no default query execution: another tooling is necessary -->
+- no default query execution: another tooling is necessary
 
 ---
 
@@ -324,10 +324,6 @@ You are a consultant tasked with designing a data management architecture for an
     </ul>
 </li>
 </ol>
-
---
-
-<span style="color: orange;">Key Facts of the Business</span>
 
 --
 
