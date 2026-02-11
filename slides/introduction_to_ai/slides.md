@@ -546,23 +546,88 @@ Note:
       <li><span style="color: orange;">Model:</span> neural network.</li>
     </ul>
   </div>
-  <div style="flex: 1;">
-    <div
-      style="
-        border: 2px dashed #666;
-        border-radius: 10px;
-        height: 220px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #aaa;
-        font-size: 0.75em;
-      "
-    >
-      Insert your neural network classification image here
-    </div>
+  <div style="flex: 1; margin-top: 100px">
+    <img
+  src="../assets/introduction_to_ai/imgs/imgs.013.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
   </div>
 </div>
+
+--
+
+ANN structure:
+
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.010.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+Let's zoom into a node:
+
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.011.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+How can those models be trained?
+
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.012.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+A deep neural network (deep learning)
+
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.014.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+A collection of different neural network types
+
+<img
+  src="../assets/introduction_to_ai/imgs/imgs.015.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
 
 ---
 
