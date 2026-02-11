@@ -11,7 +11,21 @@
 Where are we located during the lecture?
 
 <img
-  src="../assets/introduction_to_ai/imgs/imgs.001.png"
+  src="../assets/generative_ai_and_agents/imgs/imgs.001.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+---
+
+One more class of machine learning models:
+
+<img
+  src="../assets/generative_ai_and_agents/imgs/imgs.002.png"
   alt="Overview"
   style="
     width: 800px;
@@ -22,17 +36,9 @@ Where are we located during the lecture?
 
 --
 
-Fake it until you make it!
+What is a generative model?
 
-<img
-  src="../assets/introduction_to_ai/imgs/imgs.002.png"
-  alt="Overview"
-  style="
-    width: 800px;
-    margin: 0 auto 4rem auto;
-    background: transparent;
-  "
-/>
+- probably (at least in near future) worlds best imitator
 
 ---
 
