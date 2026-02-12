@@ -46,11 +46,10 @@ Where are we located during the lecture?
 
 <span style="color: orange;">Outlook</span>
 
-- Data management architectures
-- Deep-dive into lyvy's architecture
-- Deep-dive into a realtime architecture
+- data management architectures
+- lyvy's architecture
+- realtime architecture
 - Cloud vs. On-Premise
-- Exercise: Design and Critique a Data Management Architecture yourself
 
 ---
 
@@ -272,115 +271,13 @@ What different levels are there in the cloud sector and how do they differ?
 
 ---
 
-<span style="color: orange;">Deep-dive into a realtime architecture</span>
+<span style="color: orange;">A realtime architecture</span>
 
 --
 
 <img
   src="../assets/data_management/imgs/imgs.008.png"
   alt="Lakehouse"
-  style="
-    width: 1600px;
-    margin: 0 auto 4rem auto;
-    background: transparent;
-  "
-/>
-
----
-
-<span style="color: orange;">Exercise</span>: Design and Critique a Data Management Architecture yourself
-
---
-
-<span style="color: orange;">Scenario</span>
-
-<ol class="small-text">
-You are a consultant tasked with designing a data management architecture for an upcoming start-up, called DebtRay, handling expensive raw data from multiple providers (e.g. Bloomberg, London Stock Exchange). The architecture must address several challenges, including cost, scalability, and flexibility.
-</ol>
-
-<ol class="small-text">DebtRay's business model is the quantification and assessment of companies bond emissions.</ol>
-
---
-
-<span style="color: orange;">Procedure</span>
-
-<ol class="smaller-list">
-<li>Design Phase
-    <ul>
-        <li>Based on the provided key points, draft a data management architecture that balances costs, risks, and scalability.</li>
-        <li>Describe each component of your architecture and justify your decisions.</li>
-    </ul>
-</li>
-<li>Comparison Phase
-    <ul>
-        <li>Compare your architecture to the provided actual architecture.</li>
-        <li>Identify strengths and weaknesses of both approaches.</li>
-    </ul>
-</li>
-<li>Critique Phase
-    <ul>
-        <li>Suggest improvements for the actual architecture and for your own design.</li>
-        <li>Focus on aspects like scalability, cost efficiency, and handling schema changes.</li>
-    </ul>
-</li>
-</ol>
-
---
-
-<span style="color: orange;">General Business</span>
-
-- not certain that business idea works and scales
-- starting with just one person in the role as full stack data alchemist
-- first implementation time is limited and must proceed quickly
-- next to analytical services, the business provides machine learning models for predictions
-
---
-
-<span style="color: orange;">Data</span>
-
-- high-priced external data as the basis for core business (Bloomberg / London Stock Exchange)
-- data volumes manageable in the range under 1 GB
-- live data desirable but not absolutely necessary, at least one update per month
-
---
-
-<span style="color: orange;">Data Aggregation</span>
-
-- Processes: De-duplication, combining raw data, imputing, interpolating, sanity checks, and replay capabilities.
-- Challenges: Complex workflows due to messy raw data and evolving requirements.
-- Compatibility: Must handle schema evolution in raw data.
-
---
-
-<span style="color: orange;">Reporting / Monitoring</span>
-
-- CFO should get information about costs
-- CEO should get information about customers and corresponding KPIs
-- CTO should get information about the state of the data infrastructure (Everything up and running? Did we face errors somewhere?)
-
---
-
-<span style="color: lightgreen;">Design a Data Management Architecture</span>
-
-Checklist
-
-<ol class = "small-list">
-<li>Provide schematic flowchart of your designed architecture.</li>
-<li>Add names of tools for the different steps. (google for it, make proposals)</li>
-<li>How does your architecture address the economic risk associated with raw data?</li>
-<li>Does your design support future scalability and modularity?</li>
-<li>How do you handle schema changes in raw data?</li>
-<li>Compare the costs of your architecture with the current one (e.g. storage, compute, backup).</li>
-<li>What trade-offs did you make in your design, and why?</li>
-</ol>
-
---
-
-<span style="color: lightgreen;">Criticize Debtray's Architecture</span>
-
-<img
-  src="../assets/data_management/imgs/imgs.006.png"
-  alt="Debtray Architecture"
   style="
     width: 1600px;
     margin: 0 auto 4rem auto;

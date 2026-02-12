@@ -1,4 +1,4 @@
-<!-- TODO: 
+<!-- TODO:
  - one slide with some examples
  - ai based future is full of ai and human need to find reinvent themself if even possible
  - talking about AGI, superintelligence, ...
@@ -47,9 +47,10 @@ Where are we located during the lecture?
 </div>
 
 Note:
+
 - One message: BI becomes more valuable when it drives action, not only reporting.
 - ShopNow example: reduce chargebacks, keep inventory healthy, and improve search/recommendations.
-Source (image): https://commons.wikimedia.org/wiki/File:Artificial-Intelligence.jpg
+  Source (image): https://commons.wikimedia.org/wiki/File:Artificial-Intelligence.jpg
 
 ---
 
@@ -66,37 +67,10 @@ Source (image): https://commons.wikimedia.org/wiki/File:Artificial-Intelligence.
 />
 
 Note:
+
 - Use as map, then zoom into characters + turning points.
 - In this lecture we stop around AlphaGo; the modern GenAI part is next lecture.
-Source: https://commons.wikimedia.org/wiki/File:AI-History-Timeline-300dpi.jpg
-
---
-
-#### Can machines think?
-
-<img
-  src="../assets/introduction_to_ai/imgs/imgs.003.png"
-  alt="Overview"
-  style="
-    width: 800px;
-    margin: 0 auto 4rem auto;
-    background: transparent;
-  "
-/>
-
---
-
-#### A new field was born
-
-<img
-  src="../assets/introduction_to_ai/imgs/imgs.004.png"
-  alt="Overview"
-  style="
-    width: 800px;
-    margin: 0 auto 4rem auto;
-    background: transparent;
-  "
-/>
+  Source: https://commons.wikimedia.org/wiki/File:AI-History-Timeline-300dpi.jpg
 
 ---
 
@@ -233,12 +207,9 @@ Source: https://commons.wikimedia.org/wiki/File:AI-History-Timeline-300dpi.jpg
 </div>
 
 Note:
-- create decision tree on white board
-- create the corresponding python code
 
---
-
-#### <span style="color: lightgreen;"> Create the rule based decision tree!</span>
+- rule based decision tree
+- corresponding python code
 
 ---
 
@@ -265,6 +236,12 @@ Note:
 />
   </div>
 </div>
+
+Note:
+
+- Why "symbolic"? The problem is modeled with explicit symbols and rules: nodes, edges, costs, and a goal.
+- Dijkstra/A\* operate on that hand-crafted symbolic graph, not learned from data.
+- So it is algorithmic, but in AI taxonomy it sits under symbolic AI, not ML.
 
 ---
 
@@ -763,4 +740,3 @@ A collection of different neural network types
 ---
 
 #### <span style="color: lightgreen;"> Try to describe your 3 historical breakthroughs in AI from the beginning of the lecture in more technical terms.</span>
-
