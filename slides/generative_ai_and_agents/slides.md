@@ -26,17 +26,41 @@ One more class of machine learning models:
 
 --
 
-Generative AI: the big idea
+#### What is generative AI?
 
-- Buzzwords: synthetic data, content creation, probabilistic modeling
-- Prepare: 1-2 examples (text, image) + "learning patterns, not rules"
+- synthetic data / content creation
+- probabilistic modeling
+  - given data, generative models learn to imitate data / to sample data
 
----
+--
 
-What is a generative model?
+#### Generative Adversarial Networks (GANs)
 
-- Buzzwords: imitation, distribution, sampling
-- Prepare: one line diagram "learn data distribution → sample new data"
+<img
+  src="../assets/generative_ai_and_agents/imgs/imgs.003.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+### Encoder - Decoder Models
+
+<img
+  src="../assets/generative_ai_and_agents/imgs/imgs.004.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
+<span style="color: lightgreen;">How does the training data look like?</span>
 
 ---
 
@@ -44,6 +68,14 @@ Large Language Models (LLMs) — abstract view
 
 - Buzzwords: next-token prediction, probability distribution
 - Prepare: tiny next-word example with probabilities
+
+---
+
+Upscaling upscaling upscaling
+
+show evolution of number of parameters over time
+
+TODO for students: calculate memory and number of graphic cards needed to run such a model based on number of parameters
 
 ---
 
