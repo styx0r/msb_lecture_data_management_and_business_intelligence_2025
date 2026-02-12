@@ -64,6 +64,8 @@ One more class of machine learning models:
 
 ---
 
+https://www.lakera.ai/blog/large-language-models-guide#how-are-large-language-models-trained
+
 Large Language Models (LLMs) — abstract view
 
 - Buzzwords: next-token prediction, probability distribution
