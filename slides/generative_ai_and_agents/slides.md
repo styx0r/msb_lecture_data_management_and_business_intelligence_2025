@@ -1,4 +1,4 @@
-<!-- TODO: 
+<!-- TODO:
  - one slide with some examples
  - ai based future is full of ai and human need to find reinvent themself if even possible
  - talking about AGI, superintelligence, ...
@@ -52,7 +52,9 @@ Agents
 - ReACT
 - Deep Agent
 - Tools
+- Subagents
+- Vectordatabase
+- Context
+- world knowledge vs. grounded information
 
 ---
-
-

@@ -88,6 +88,17 @@ Where are we located during the lecture?
 
 --
 
+<span style="color: orange;">Answer (examples)</span>
+
+<ol class="small-list">
+<li><strong>Schema changes:</strong> changing a mart often means reprocessing months/years of data.</li>
+<li><strong>Complex ETL:</strong> many joins and transformations increase compute time.</li>
+<li><strong>Large history reloads:</strong> backfills are expensive.</li>
+<li><strong>Many marts:</strong> maintaining many curated tables adds cost and effort.</li>
+</ol>
+
+--
+
 <span style="color: orange;">Pros</span>
 
 <ol class="small-list">
@@ -108,12 +119,127 @@ Where are we located during the lecture?
 
 --
 
-What makes a good <span style="color: orange;">ETL</span> process?
+#### Example: e-commerce dashboard
+
+<ul class="small-list">
+  <li>Daily funnel: sessions → add_to_cart → orders</li>
+  <li>Bounce rate and conversion rate</li>
+  <li>Slice by <em>utm_source</em> (organic / paid / email)</li>
+</ul>
+
+--
+
+#### Raw tables (messy)
+
+<div class="two-col">
+  <div>
+    <div style="color: orange;">raw_web_events</div>
+    <table class="small-list">
+      <tr><th>event_time</th><th>session_id</th><th>user_id</th><th>event</th><th>utm_source</th></tr>
+      <tr><td>2024/10/01 12:01</td><td>s-11</td><td>u-7</td><td>page_view</td><td>paid</td></tr>
+      <tr><td>2024/10/01 12:02</td><td>s-11</td><td>u-7</td><td>add_to_cart</td><td>paid</td></tr>
+      <tr><td>2024/10/01 12:03</td><td>s-12</td><td>u-9</td><td>page_view</td><td>organic</td></tr>
+    </table>
+  </div>
+  <div>
+    <div style="color: orange;">raw_orders</div>
+    <table class="small-list">
+      <tr><th>order_time</th><th>order_id</th><th>user_id</th><th>total_cents</th><th>currency</th></tr>
+      <tr><td>2024-10-01T12:05Z</td><td>O-1001</td><td>u-7</td><td>129900</td><td>USD</td></tr>
+      <tr><td>2024-10-01T12:10Z</td><td>O-1002</td><td>u-9</td><td>4990</td><td>EUR</td></tr>
+    </table>
+  </div>
+</div>
+
+<div style="margin-top: 0.6rem; font-size: 0.85em;">
+  Messy: different time formats, multiple events per session, currencies not aligned.
+</div>
+
+--
+
+#### Staging tables (cleaned, reusable)
+
+<div class="two-col">
+  <div>
+    <div style="color: orange;">stg_sessions</div>
+    <table class="small-list">
+      <tr><th>session_id</th><th>date</th><th>utm_source</th><th>events</th><th>bounce</th></tr>
+      <tr><td>s-11</td><td>2024-10-01</td><td>paid</td><td>5</td><td>0</td></tr>
+      <tr><td>s-12</td><td>2024-10-01</td><td>organic</td><td>1</td><td>1</td></tr>
+    </table>
+  </div>
+  <div>
+    <div style="color: orange;">stg_orders</div>
+    <table class="small-list">
+      <tr><th>order_id</th><th>date</th><th>session_id</th><th>revenue_eur</th></tr>
+      <tr><td>O-1001</td><td>2024-10-01</td><td>s-11</td><td>118.00</td></tr>
+      <tr><td>O-1002</td><td>2024-10-01</td><td>s-12</td><td>49.90</td></tr>
+    </table>
+  </div>
+</div>
+
+<div style="margin-top: 0.6rem; font-size: 0.85em;">
+  Staging is clean + reusable for multiple marts (marketing, finance, product).
+</div>
+
+--
+
+#### Mart table (dashboard-specific)
+
+<div style="color: orange;">mart_daily_funnel</div>
+<table class="small-list">
+  <tr><th>date</th><th>utm_source</th><th>sessions</th><th>bounces</th><th>add_to_cart</th><th>orders</th><th>conversion</th></tr>
+  <tr><td>2024-10-01</td><td>paid</td><td>120</td><td>18</td><td>45</td><td>20</td><td>16.7%</td></tr>
+  <tr><td>2024-10-01</td><td>organic</td><td>180</td><td>40</td><td>30</td><td>15</td><td>8.3%</td></tr>
+</table>
+
+<div style="margin-top: 0.6rem; font-size: 0.85em;">
+  This is built exactly for the dashboard charts (fast and simple).
+</div>
+
+--
+
+#### What makes a good <span style="color: orange;">ETL</span> process?
 
 - <strong>Schema documentation:</strong> clear column names + types (e.g., <em>order_date</em> is a date, not text).
 - <strong>Traceability:</strong> know the source of each mart (dependency graph from raw → staging → mart).
 - <strong>Monitoring + alerts:</strong> missing data triggers a notification (e.g., Slack/email).
 - <strong>Testing + logging:</strong> row counts, null checks, and errors are logged.
+
+--
+
+#### Use <span style="color: orange;">tooling</span> meant for this purpose
+
+- Often done with plain Python: connect to sources, transform data, and load into the warehouse.
+- <span style="color: orange;">by far better:</span> use <span style="color: orange;">dbt</span> to get documentation, tests, and lineage (what makes a good ETL process).
+
+--
+
+#### by convention with structure
+
+<img
+  src="../assets/data_management/imgs/imgs.009.png"
+  alt="Data Lake"
+  style="
+    width: 1600px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+#### additionally webui for documentation & tracing
+
+<img
+  src="../assets/data_management/imgs/imgs.010.png"
+  alt="Data Lake"
+  style="
+    width: 1600px;
+    margin: 0 auto 4rem auto;
+    background: transparent;
+  "
+/>
 
 ---
 
@@ -160,7 +286,7 @@ What makes a good <span style="color: orange;">ETL</span> process?
 
 <span style="color: orange;">Cons</span>
 
-- higher costs on processing the data (no free lunch)
+- higher costs on processing the data
 - lack of structure, therefore lack of transparency: risk of becoming a data swamp
 - security challenges: might be challenging to identify security threats because of vast amount of data in vast amount of formats
 - no default query execution: another tooling is necessary
@@ -222,7 +348,7 @@ Regarding costs, in a Hybrid Data Lake setting, the amount of storage is increas
 <li>Often standalone query engine is necessary.</li>
 </ol>
 
-<span style = "color: lightgreen">So what is a potential disadvantage of this structure? (Remember there is no free lunch!)</span>
+<span style = "color: lightgreen">So what is a potential disadvantage of this structure?</span>
 
 --
 
