@@ -76,11 +76,10 @@ Where are we located during the lecture?
 <span style="color: orange;">Description</span>
 
 <ol class="small-list">
-<li>A Data Warehouse serves as a central hub for storing structured data.</li>
-<li>Information is collected from multiple sources, processed / ingested (ETL), and then stored in the Warehouse.</li>
-<li>The design of a Data Warehouse resembles a well-structured library, enabling easy data retrieval and analysis.</li>
-<li>This organization allows businesses to gain insights quickly, enhancing operational efficiency and decision-making.</li>
-<li>Additionally, its structured data foundation supports robust Business Intelligence (BI) analysis.</li>
+<li>Central hub for cleaned, structured data (e.g., <em>sales_orders</em>, <em>customers</em>, <em>products</em>).</li>
+<li>Data from many sources is collected, cleaned, and loaded (ETL) into consistent tables.</li>
+<li>Library analogy: to answer “Q4 revenue in Germany”, you go to the right shelf (sales) and index (country, date).</li>
+<li>Result: fast, consistent reporting and BI dashboards.</li>
 </ol>
 
 --
@@ -92,13 +91,9 @@ Where are we located during the lecture?
 <span style="color: orange;">Pros</span>
 
 <ol class="small-list">
-<li>Transparent ETL processes helps to understand how data is created (e.g. using <em>dbt</em>)</li>
-<li>Higher security: structured data organization in data marts</li>
-<li>Very fast query processing</li>
-<ul>
-  <li>as only relevant data is saved as data marts the amount of data remains within limits</li>
-  <li>typically relational databases are used, which are extremely performant within a certain data size limit</li>
-</ul>
+<li><strong>Clear lineage:</strong> you can see how a table was built (e.g., dbt model “monthly_revenue”).</li>
+<li><strong>Fast queries:</strong> dashboards load quickly on curated data marts (e.g., sales by month).</li>
+<li><strong>Stronger governance:</strong> access control by domain (e.g., HR mart separate from sales).</li>
 </ol>
 
 --
@@ -106,21 +101,19 @@ Where are we located during the lecture?
 <span style="color: orange;">Cons</span>
 
 <ol class="small-list">
-<li>as intermediate data tables (like staging tables) are typically not persisted, troubleshooting can be difficult (virtual tables / views vs. physical tables / materialized)</li>
-<li>changes in schema of data marts can be very expensive (reload external data sources)</li>
-<li>loss of data can occur if data on external data sources has a short retention period</li>
-<li>explorative data tasks based on raw- and intermediate data (staging) not possible</li>
-<li>not suitable for machine learning tasks on unstructured data</li>
+<li><strong>Less flexible for raw exploration:</strong> not ideal for logs/text/audio without extra storage.</li>
+<li><strong>Schema changes are costly:</strong> changing a mart can require reloading pipelines.</li>
+<li><strong>Raw data may be lost:</strong> if the source keeps data only briefly (e.g., 7‑day logs).</li>
 </ol>
 
 --
 
 What makes a good <span style="color: orange;">ETL</span> process?
 
-- schema documentation
-- traceability of the data marts created (dependency graphs)
-- configurable fault tolerance with monitoring
-- testing with logging
+- <strong>Schema documentation:</strong> clear column names + types (e.g., <em>order_date</em> is a date, not text).
+- <strong>Traceability:</strong> know the source of each mart (dependency graph from raw → staging → mart).
+- <strong>Monitoring + alerts:</strong> missing data triggers a notification (e.g., Slack/email).
+- <strong>Testing + logging:</strong> row counts, null checks, and errors are logged.
 
 ---
 
