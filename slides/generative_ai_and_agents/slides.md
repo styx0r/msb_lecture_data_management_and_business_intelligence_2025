@@ -714,41 +714,11 @@ AI app -> client: "In Berlin it's about 12°C and cloudy."
 
 ---
 
-ACP (Agent Communication Protocol)
+Summary (key takeaways)
 
-- Purpose: standard messages between agents
-- Focus: coordination, delegation, and handoffs
-- Useful for multi-agent systems and workflows
-
----
-
-ACP: multi-agent message flow
-
-<svg width="720" height="240" viewBox="0 0 720 240" aria-label="ACP multi-agent diagram">
-  <rect x="280" y="20" width="160" height="60" rx="10" fill="#1f2a44" stroke="#888" />
-  <text x="360" y="55" text-anchor="middle" fill="#fff" font-size="14">Supervisor</text>
-
-  <rect x="60" y="140" width="160" height="60" rx="10" fill="#2a3b5f" stroke="#888" />
-  <text x="140" y="175" text-anchor="middle" fill="#fff" font-size="13">Worker A</text>
-
-  <rect x="280" y="140" width="160" height="60" rx="10" fill="#2a3b5f" stroke="#888" />
-  <text x="360" y="175" text-anchor="middle" fill="#fff" font-size="13">Worker B</text>
-
-  <rect x="500" y="140" width="160" height="60" rx="10" fill="#2a3b5f" stroke="#888" />
-  <text x="580" y="175" text-anchor="middle" fill="#fff" font-size="13">Worker C</text>
-
-  <line x1="360" y1="80" x2="140" y2="140" stroke="#bbb" stroke-width="2" />
-  <line x1="360" y1="80" x2="360" y2="140" stroke="#bbb" stroke-width="2" />
-  <line x1="360" y1="80" x2="580" y2="140" stroke="#bbb" stroke-width="2" />
-</svg>
-
----
-
-ACP message types (examples)
-
-- Task assignment: who does what?
-- Status update: progress or blockers
-- Result handoff: summarize findings
-- Conflict resolution: merge or choose
+- Agents turn LLMs into action by combining planning + tools + feedback
+- RAG and vector search ground answers with external data
+- MCP standardizes tool and context access across apps
+- LLMs predict next tokens; tools provide real-world data/actions
 
 ---
