@@ -341,8 +341,68 @@ messages = [
 
 Context vs. world knowledge
 
-- Buzzwords: prompt, context window, memorization vs. generalization
-- Prepare: show "grounded info" vs. "model memory"
+- Two sources in every answer:
+  - Context = what you send now
+  - World knowledge = what the model learned during training
+
+--
+
+#### 1) Context (grounded info)
+
+- System + user messages
+- Retrieved docs, tables, files
+- Limited by the context window
+
+Example (context snippet):
+
+```
+Table: revenue_by_country_q4
+Germany = 3.2M EUR
+France  = 2.4M EUR
+```
+
+--
+
+#### 2) World knowledge (model memory)
+
+- General facts and patterns
+- Not specific to your company
+- Can be stale or incomplete
+
+Example (world knowledge):
+
+```
+Berlin is the capital of Germany.
+GDP is a common macroeconomic indicator.
+```
+
+--
+
+#### 3) What happens if context is missing?
+
+Example question:
+
+```
+What was Germany Q4 revenue?
+```
+
+Possible response without context:
+
+```
+I'm not sure; I don't have your KPI data.
+```
+
+Bad response (hallucination):
+
+```
+Germany Q4 revenue was 4.8M EUR.
+```
+
+--
+
+Takeaway:
+
+- If the answer is not in the context, the model might guess.
 
 ---
 
