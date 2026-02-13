@@ -564,11 +564,11 @@
    C. Multi Cloud Platform
    D. Model Cache Process
 
-90. ACP stands for:
-   A. Agent Communication Protocol
-   B. Automatic Code Pipeline
-   C. Access Control Policy
-   D. Agent Cloud Platform
+90. What is the main idea of MCP?
+   A. A database for vector search
+   B. A standard way to connect apps to tools and context
+   C. A GPU training protocol
+   D. A file compression method
 
 Answer Key
 1-B, 2-B, 3-B, 4-A, 5-B, 6-B, 7-C, 8-B, 9-B, 10-B,
