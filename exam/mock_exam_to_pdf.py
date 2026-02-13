@@ -123,11 +123,12 @@ def _build_html(
 
     preface_html = markdown(preface_md, extensions=["extra"]) if preface_md else ""
     sections_html = []
-    for heading, body_md in sections:
+    for idx, (heading, body_md) in enumerate(sections):
         heading_html = markdown(f"## {heading}", extensions=["extra"])
         body_html = markdown(body_md, extensions=["extra"]) if body_md else ""
+        section_class = "section first-section" if idx == 0 and preface_md else "section"
         sections_html.append(
-            f'<div class="section">{heading_html}<div class="questions">{body_html}</div></div>'
+            f'<div class="{section_class}">{heading_html}<div class="questions">{body_html}</div></div>'
         )
     answer_html = markdown(answer_md, extensions=["extra"]) if answer_md else ""
 
@@ -156,7 +157,7 @@ def _build_html(
         break-before: page;
         page-break-before: always;
       }}
-      .section:first-of-type {{
+      .section.first-section {{
         break-before: auto;
         page-break-before: auto;
       }}
