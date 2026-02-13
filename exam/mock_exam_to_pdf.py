@@ -86,11 +86,49 @@ def _mark_intro_line(text: str) -> str:
     return text
 
 
+def _split_sections(text: str) -> tuple[str, list[tuple[str, str]]]:
+    lines = text.splitlines()
+    preface: list[str] = []
+    sections: list[tuple[str, str]] = []
+    current_heading: str | None = None
+    current_body: list[str] = []
 
-def _build_html(questions_md: str, answer_md: str, base_url: str) -> str:
+    for line in lines:
+        if line.startswith("## "):
+            if current_heading is not None:
+                sections.append((current_heading, "\n".join(current_body).strip()))
+                current_body = []
+            current_heading = line[3:].strip()
+            continue
+
+        if current_heading is None:
+            preface.append(line)
+        else:
+            current_body.append(line)
+
+    if current_heading is not None:
+        sections.append((current_heading, "\n".join(current_body).strip()))
+
+    return "\n".join(preface).strip(), sections
+
+
+
+def _build_html(
+    preface_md: str,
+    sections: list[tuple[str, str]],
+    answer_md: str,
+    base_url: str,
+) -> str:
     from markdown import markdown
 
-    questions_html = markdown(questions_md, extensions=["extra"])
+    preface_html = markdown(preface_md, extensions=["extra"]) if preface_md else ""
+    sections_html = []
+    for heading, body_md in sections:
+        heading_html = markdown(f"## {heading}", extensions=["extra"])
+        body_html = markdown(body_md, extensions=["extra"]) if body_md else ""
+        sections_html.append(
+            f'<div class="section">{heading_html}<div class="questions">{body_html}</div></div>'
+        )
     answer_html = markdown(answer_md, extensions=["extra"]) if answer_md else ""
 
     return f"""<!doctype html>
@@ -113,6 +151,14 @@ def _build_html(questions_md: str, answer_md: str, base_url: str) -> str:
       }}
       h1, h2 {{
         column-span: all;
+      }}
+      .section {{
+        break-before: page;
+        page-break-before: always;
+      }}
+      .section:first-of-type {{
+        break-before: auto;
+        page-break-before: auto;
       }}
       .intro {{
         white-space: nowrap;
@@ -139,9 +185,8 @@ def _build_html(questions_md: str, answer_md: str, base_url: str) -> str:
     </style>
   </head>
   <body>
-    <div class="questions">
-      {questions_html}
-    </div>
+    {"<div class=\"questions preface\">" + preface_html + "</div>" if preface_html else ""}
+    {"".join(sections_html)}
     {"<div class=\"answer-key\">" + answer_html + "</div>" if answer_html else ""}
   </body>
 </html>
@@ -204,11 +249,17 @@ def main() -> int:
 
     text = input_path.read_text(encoding="utf-8")
     questions_md, answer_md = _split_answer_key(text)
-    questions_md = _mark_intro_line(questions_md)
-    questions_md = _ensure_option_line_breaks(questions_md)
+    preface_md, sections = _split_sections(questions_md)
+    if preface_md:
+        preface_md = _mark_intro_line(preface_md)
+        preface_md = _ensure_option_line_breaks(preface_md)
+    formatted_sections = []
+    for heading, body_md in sections:
+        body_md = _ensure_option_line_breaks(body_md)
+        formatted_sections.append((heading, body_md))
     if not include_answers:
         answer_md = ""
-    html = _build_html(questions_md, answer_md, base_url=str(input_path.parent))
+    html = _build_html(preface_md, formatted_sections, answer_md, base_url=str(input_path.parent))
 
     from weasyprint import HTML
 
