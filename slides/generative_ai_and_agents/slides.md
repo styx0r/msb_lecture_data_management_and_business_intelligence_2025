@@ -577,28 +577,36 @@ Key parts of an agent
 
 ---
 
-Simple Python example (toy agent + tool)
+Example prompt → tool call → answer
 
-```python
-def search_tool(query: str) -> str:
-    # pretend to call a search API
-    return f"Result for '{query}': ... "
-
-def run_agent(task: str) -> str:
-    if "search" in task.lower():
-        observation = search_tool(task)
-        return f"Final answer using tool output: {observation}"
-    return "Final answer without tools."
-
-print(run_agent("Search: What is RAG?"))
+```
+System: You are a BI assistant. Use tools when needed.
+User: What is the EUR/USD rate today?
+Assistant (tool call): search(query="EUR/USD rate today")
+Tool: 1 EUR = 1.09 USD
+Assistant: Today it's about 1.09 USD per EUR.
 ```
 
 ---
 
-AI Agent + Tools
+Deep Agents
 
-- Buzzwords: tool calls, function interfaces, safety bounds
-- Prepare: example tool list (search, calendar, DB)
+<img
+      src="../assets/generative_ai_and_agents/imgs/imgs.018.png"
+      alt="API request/response diagram"
+      style="
+        width: 640px;
+        margin: 0 auto 0rem auto;
+        background: transparent;
+      "
+/>
+
+--
+
+- planning: break goal into steps
+- using sub-agents: delegate parts of the task
+- coordination: merge results + resolve conflicts
+- memory/trace: keep intermediate state
 
 ---
 
@@ -607,20 +615,6 @@ MCP (Model Context Protocol)
 - Buzzwords: standardization, tool discovery, connectors
 - Prepare: simple client ↔ MCP server ↔ tool diagram
 - USB C picture: from many standards to just one (https://www.faz.net/pro/digitalwirtschaft/kuenstliche-intelligenz/model-context-protocol-was-hinter-dem-neuen-standard-steckt-accg-200509814.html?premium=0xf96cbe2e76e7b601506905a135ed225333d725af0ec8d8cfde2e0ebb68da798c&share=androidfaznativeshare&gift)
-
----
-
-ReAct agent
-
-- Buzzwords: reasoning + acting, trace, iterate
-- Prepare: 3-step thought/action/observation sequence
-
----
-
-Deep Agent
-
-- Buzzwords: subagents, delegation, parallel tasks
-- Prepare: supervisor + workers diagram
 
 ---
 
