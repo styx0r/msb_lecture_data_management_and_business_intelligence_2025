@@ -64,18 +64,25 @@ One more class of machine learning models:
 
 ---
 
-https://www.lakera.ai/blog/large-language-models-guide#how-are-large-language-models-trained
-
-Large Language Models (LLMs) — abstract view
-
-- Buzzwords: next-token prediction, probability distribution
-- Prepare: tiny next-word example with probabilities
+#### <span style="color: orange;">Transformer models / Large Language Models (LLMs)</span>
 
 --
 
-#### What is different from latest LLM (> 2017) compared to preview architectures
+#### <span style="color: orange;">What is different from latest LLM (> 2017) compared to preview architectures?</span>
 
-transformer architecture image
+<img
+  src="../assets/generative_ai_and_agents/imgs/imgs.007.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+<span style="color: orange;">What is different from latest LLM (> 2017) compared to preview architectures?</span>
 
 - transformer architecture allows for efficient large scale computation
 - attention mechanism allows the model to focus on relevant part whlie disregarding the reest
@@ -127,27 +134,111 @@ transformer architecture image
   "
 />
 
+--
+
+<img
+  src="../assets/generative_ai_and_agents/animations/llm_training_step_1.gif"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+<img
+  src="../assets/generative_ai_and_agents/animations/llm_training_step_2.gif"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+<img
+  src="../assets/generative_ai_and_agents/animations/llm_training_step_3.gif"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+<img
+  src="../assets/generative_ai_and_agents/animations/llm_training_step_3_llm_selection_answer.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+<img
+  src="../assets/generative_ai_and_agents/animations/llm_training_step_4.gif"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
 ---
 
-Upscaling upscaling upscaling
+#### Let's scale a little (Parameters)
 
-show evolution of number of parameters over time
+<img
+  src="../assets/generative_ai_and_agents/imgs/imgs.008.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
 
-TODO for students: calculate memory and number of graphic cards needed to run such a model based on number of parameters
+--
 
----
+#### Since GPT4 it's not published anymore, just estimated by AI community
 
-How LLMs learn
+<img
+  src="../assets/generative_ai_and_agents/imgs/imgs.009.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
 
-- Buzzwords: massive text corpora, self-supervision, loss
-- Prepare: "predict next word" training loop sketch
+--
 
----
+#### OpenAI learned from DeepSeek V2 and used Mixture of Experts (MoE)
 
-Words as numbers
+<img
+  src="../assets/generative_ai_and_agents/imgs/imgs.010.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
 
-- Buzzwords: tokens, embeddings, vectors
-- Prepare: simple tokenization + embedding visualization
+--
+
+<span style="color: lightgreen;">What about computational resources? How many graphic cards do we need round about when we deploying such a model assuming we have high end graphics card with 80GB?</span>
 
 ---
 
@@ -162,8 +253,6 @@ Limitations of LLMs
 
 - Buzzwords: hallucinations, stale knowledge, context limits
 - Prepare: 2-3 failure examples (fabricated citation, outdated fact)
-
----
 
 ---
 
