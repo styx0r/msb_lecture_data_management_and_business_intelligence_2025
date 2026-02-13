@@ -450,6 +450,46 @@ A: I don't see that number in the provided context.
 
 ---
 
+#### <span style="color: orange;">But how can the context be provided?</span>
+
+--
+
+#### ChatGPT (manual context)
+
+- User uploads a document or pastes text
+- Prompt asks for a task (summary, translation, Q&A)
+
+Example:
+
+```
+User: Uploads "Q4_report.pdf" and asks:
+      "Summarize the top 3 risks in one paragraph."
+```
+
+--
+
+#### Business apps (automatic context)
+
+- The app already has the data
+- The user never sees the raw documents
+- The system injects relevant context behind the scenes
+
+Example: Help-center FAQ (retrieved docs)
+
+```
+User: "Can I return a laptop after 45 days?"
+System context: KB article "Returns policy"
+                Laptops: 30-day return window
+                Accessories: 60-day return window
+Assistant: "For laptops the return window is 30 days, so 45 days is outside the policy."
+```
+
+---
+
+#### <span style="color: orange;">But how can we inject the relevant system context based on text documents?</span>
+
+---
+
 Vector databases: why they exist
 
 - Buzzwords: semantic search, similarity, nearest neighbors
