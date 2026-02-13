@@ -556,6 +556,43 @@ Agents: from models to actions
       "
 />
 
+--
+
+Agent loop (explained in words)
+
+- <span style="color: orange;">Task/Goal</span> → user request
+- <span style="color: orange;">LLM</span> → plan/decide what to do
+- <span style="color: orange;">Tool call</span> → external action (search, DB, API)
+- <span style="color: orange;">Environment</span> → returns observation
+- <span style="color: orange;">Outcome</span> → final answer or next action
+
+--
+
+Key parts of an agent
+
+- <span style="color: orange;">Reasoning step</span>: decide next action
+- <span style="color: orange;">Tools</span>: functions with inputs/outputs
+- <span style="color: orange;">Environment</span>: where actions happen
+- <span style="color: orange;">Feedback</span>: observations update the context
+
+---
+
+Simple Python example (toy agent + tool)
+
+```python
+def search_tool(query: str) -> str:
+    # pretend to call a search API
+    return f"Result for '{query}': ... "
+
+def run_agent(task: str) -> str:
+    if "search" in task.lower():
+        observation = search_tool(task)
+        return f"Final answer using tool output: {observation}"
+    return "Final answer without tools."
+
+print(run_agent("Search: What is RAG?"))
+```
+
 ---
 
 AI Agent + Tools
