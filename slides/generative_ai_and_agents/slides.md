@@ -71,6 +71,62 @@ Large Language Models (LLMs) — abstract view
 - Buzzwords: next-token prediction, probability distribution
 - Prepare: tiny next-word example with probabilities
 
+--
+
+#### What is different from latest LLM (> 2017) compared to preview architectures
+
+transformer architecture image
+
+- transformer architecture allows for efficient large scale computation
+- attention mechanism allows the model to focus on relevant part whlie disregarding the reest
+- attention mechanism captures dependencies between words and therefore improve context understanding
+
+--
+
+#### Inference / Prediction
+
+<img
+  src="../assets/generative_ai_and_agents/imgs/imgs.005.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+#### <span style="color: orange;">Wait what is the LLM predicting exactly, is it a token?</span>
+
+--
+
+<img
+  src="../assets/generative_ai_and_agents/imgs/imgs.006.png"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
+--
+
+#### A detour into the training phase
+
+--
+
+<img
+  src="../assets/generative_ai_and_agents/animations/llm_training_step_0.gif"
+  alt="Overview"
+  style="
+    width: 800px;
+    margin: 0 auto 0rem auto;
+    background: transparent;
+  "
+/>
+
 ---
 
 Upscaling upscaling upscaling
@@ -106,6 +162,8 @@ Limitations of LLMs
 
 - Buzzwords: hallucinations, stale knowledge, context limits
 - Prepare: 2-3 failure examples (fabricated citation, outdated fact)
+
+---
 
 ---
 
@@ -155,6 +213,7 @@ MCP (Model Context Protocol)
 
 - Buzzwords: standardization, tool discovery, connectors
 - Prepare: simple client ↔ MCP server ↔ tool diagram
+- USB C picture: from many standards to just one (https://www.faz.net/pro/digitalwirtschaft/kuenstliche-intelligenz/model-context-protocol-was-hinter-dem-neuen-standard-steckt-accg-200509814.html?premium=0xf96cbe2e76e7b601506905a135ed225333d725af0ec8d8cfde2e0ebb68da798c&share=androidfaznativeshare&gift)
 
 ---
 
