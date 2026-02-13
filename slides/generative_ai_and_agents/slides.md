@@ -612,15 +612,143 @@ Deep Agents
 
 MCP (Model Context Protocol)
 
-- Buzzwords: standardization, tool discovery, connectors
-- Prepare: simple client ↔ MCP server ↔ tool diagram
-- USB C picture: from many standards to just one (https://www.faz.net/pro/digitalwirtschaft/kuenstliche-intelligenz/model-context-protocol-was-hinter-dem-neuen-standard-steckt-accg-200509814.html?premium=0xf96cbe2e76e7b601506905a135ed225333d725af0ec8d8cfde2e0ebb68da798c&share=androidfaznativeshare&gift)
+- Purpose: standardize how apps connect to tools and data
+- Role: the LLM stays the same, context/tools are plugged in
+- Result: one protocol instead of many custom integrations
+- Source: https://modelcontextprotocol.io/docs/learn/architecture
+
+---
+
+MCP architecture (high level)
+
+<svg width="720" height="360" viewBox="0 0 720 360" aria-label="MCP architecture diagram">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#bbb" />
+    </marker>
+  </defs>
+
+  <rect x="40" y="20" width="140" height="60" rx="10" fill="#3b2f5f" stroke="#888" />
+  <text x="110" y="50" text-anchor="middle" fill="#fff" font-size="13">Client</text>
+  <text x="110" y="68" text-anchor="middle" fill="#bbb" font-size="11">User App</text>
+
+  <rect x="260" y="20" width="180" height="60" rx="10" fill="#1f2a44" stroke="#888" />
+  <text x="350" y="50" text-anchor="middle" fill="#fff" font-size="14">MCP Host</text>
+  <text x="350" y="68" text-anchor="middle" fill="#bbb" font-size="12">AI App</text>
+
+  <rect x="120" y="110" width="160" height="60" rx="10" fill="#2a3b5f" stroke="#888" />
+  <text x="200" y="140" text-anchor="middle" fill="#fff" font-size="13">MCP Client A</text>
+
+  <rect x="420" y="110" width="160" height="60" rx="10" fill="#2a3b5f" stroke="#888" />
+  <text x="500" y="140" text-anchor="middle" fill="#fff" font-size="13">MCP Client B</text>
+
+  <rect x="120" y="200" width="160" height="60" rx="10" fill="#1f2a44" stroke="#888" />
+  <text x="200" y="230" text-anchor="middle" fill="#fff" font-size="13">MCP Server A</text>
+  <text x="200" y="248" text-anchor="middle" fill="#bbb" font-size="11">tools/resources</text>
+
+  <rect x="420" y="200" width="160" height="60" rx="10" fill="#1f2a44" stroke="#888" />
+  <text x="500" y="230" text-anchor="middle" fill="#fff" font-size="13">MCP Server B</text>
+  <text x="500" y="248" text-anchor="middle" fill="#bbb" font-size="11">tools/resources</text>
+
+  <rect x="120" y="290" width="160" height="50" rx="10" fill="#2a3b5f" stroke="#888" />
+  <text x="200" y="320" text-anchor="middle" fill="#fff" font-size="12">Tools / APIs</text>
+
+  <rect x="420" y="290" width="160" height="50" rx="10" fill="#2a3b5f" stroke="#888" />
+  <text x="500" y="320" text-anchor="middle" fill="#fff" font-size="12">Tools / APIs</text>
+
+  <line x1="180" y1="50" x2="260" y2="50" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)" />
+
+  <line x1="350" y1="80" x2="200" y2="110" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="350" y1="80" x2="500" y2="110" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)" />
+
+  <line x1="200" y1="170" x2="200" y2="200" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="500" y1="170" x2="500" y2="200" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)" />
+
+  <line x1="200" y1="260" x2="200" y2="290" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="500" y1="260" x2="500" y2="290" stroke="#bbb" stroke-width="2" marker-end="url(#arrow)" />
+</svg>
+
+--
+
+MCP primitives (what can be shared)
+
+- <span style="color: orange;">Tools</span>: callable functions (search, DB, calendar)
+- <span style="color: orange;">Resources</span>: data blobs (files, tables, logs)
+- <span style="color: orange;">Prompts</span>: reusable templates (system + few-shot)
+- Client-side extras: sampling, elicitation, logging
+
+--
+
+MCP request flow (very short)
+
+1. initialize (capabilities)
+2. tools/list (discover)
+3. tools/call (execute)
+4. return result to the LLM
+
+```
+client -> AI app: user request
+AI app -> server: tools/list
+server -> AI app: tool metadata
+AI app -> server: tools/call {name, args}
+server -> AI app: tool result
+AI app -> client: final answer
+```
+
+--
+
+MCP request flow (concrete example)
+
+```
+client -> AI app: "What's the weather in Berlin?"
+AI app -> server: tools/list
+server -> AI app: tools = ["weather_current"]
+
+AI app -> server: tools/call
+  name="weather_current"
+  arguments={"location": "Berlin", "units": "metric"}
+
+server -> AI app: result="12°C, cloudy"
+AI app -> client: "In Berlin it's about 12°C and cloudy."
+```
 
 ---
 
 ACP (Agent Communication Protocol)
 
-- Buzzwords: inter-agent messaging, coordination
-- Prepare: multi-agent message flow sketch
+- Purpose: standard messages between agents
+- Focus: coordination, delegation, and handoffs
+- Useful for multi-agent systems and workflows
+
+---
+
+ACP: multi-agent message flow
+
+<svg width="720" height="240" viewBox="0 0 720 240" aria-label="ACP multi-agent diagram">
+  <rect x="280" y="20" width="160" height="60" rx="10" fill="#1f2a44" stroke="#888" />
+  <text x="360" y="55" text-anchor="middle" fill="#fff" font-size="14">Supervisor</text>
+
+  <rect x="60" y="140" width="160" height="60" rx="10" fill="#2a3b5f" stroke="#888" />
+  <text x="140" y="175" text-anchor="middle" fill="#fff" font-size="13">Worker A</text>
+
+  <rect x="280" y="140" width="160" height="60" rx="10" fill="#2a3b5f" stroke="#888" />
+  <text x="360" y="175" text-anchor="middle" fill="#fff" font-size="13">Worker B</text>
+
+  <rect x="500" y="140" width="160" height="60" rx="10" fill="#2a3b5f" stroke="#888" />
+  <text x="580" y="175" text-anchor="middle" fill="#fff" font-size="13">Worker C</text>
+
+  <line x1="360" y1="80" x2="140" y2="140" stroke="#bbb" stroke-width="2" />
+  <line x1="360" y1="80" x2="360" y2="140" stroke="#bbb" stroke-width="2" />
+  <line x1="360" y1="80" x2="580" y2="140" stroke="#bbb" stroke-width="2" />
+</svg>
+
+---
+
+ACP message types (examples)
+
+- Task assignment: who does what?
+- Status update: progress or blockers
+- Result handoff: summarize findings
+- Conflict resolution: merge or choose
 
 ---
