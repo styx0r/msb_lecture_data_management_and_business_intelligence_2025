@@ -242,12 +242,53 @@ One more class of machine learning models:
 
 ---
 
-ChatGPT vs. GPT models (OpenAI API)
+#### ChatGPT (product)
 
-- ChatGPT = end-user product (UI, tools, memory, safety guardrails)
-- GPT model = underlying LLM accessed via API (you build the app)
-- Same model families; capabilities depend on model + tools + prompt
-- Image idea: side-by-side ChatGPT UI vs. API request/response diagram
+<div class="two-col">
+  <div>
+    <ul>
+      <li>End-user product (web/app UI)</li>
+      <li>Includes tools, memory, and safety guardrails</li>
+      <li>Great for interactive use and quick experiments</li>
+    </ul>
+  </div>
+  <div>
+    <img
+      src="../assets/generative_ai_and_agents/imgs/imgs.011.png"
+      alt="ChatGPT UI"
+      style="
+        width: 800px;
+        margin: 0 auto 0rem auto;
+        background: transparent;
+      "
+    />
+  </div>
+</div>
+
+--
+
+#### GPT model via API (request/response)
+
+<div class="two-col">
+  <div>
+    <ul>
+      <li>Underlying LLM accessed via API (you build the app)</li>
+      <li>Same model families; capabilities depend on model + tools + prompt</li>
+      <li>Request/response JSON; you manage conversation state</li>
+    </ul>
+  </div>
+  <div>
+    <img
+      src="../assets/generative_ai_and_agents/imgs/imgs.012.png"
+      alt="API request/response diagram"
+      style="
+        width: 640px;
+        margin: 0 auto 0rem auto;
+        background: transparent;
+      "
+    />
+  </div>
+</div>
 
 --
 
