@@ -242,6 +242,62 @@ One more class of machine learning models:
 
 ---
 
+ChatGPT vs. GPT models (OpenAI API)
+
+- ChatGPT = end-user product (UI, tools, memory, safety guardrails)
+- GPT model = underlying LLM accessed via API (you build the app)
+- Same model families; capabilities depend on model + tools + prompt
+- Image idea: side-by-side ChatGPT UI vs. API request/response diagram
+
+--
+
+#### Prompt roles (system + user + assistant)
+
+```txt
+system: You are a concise BI tutor.
+user: Explain "data warehouse" in 1 sentence.
+assistant: A data warehouse is a centralized, structured store optimized for analytics.
+```
+
+--
+
+#### API call example (Python)
+
+```
+from openai import OpenAI
+client = OpenAI()
+
+messages = [
+  {"role": "system", "content": "You are a concise BI tutor."},
+  {"role": "user", "content": "Explain data warehouse in 1 sentence."},
+]
+
+response = client.chat.completions.create(
+  model="gpt-4o-mini",
+  messages=messages,
+)
+
+print(response.choices[0].message.content)
+```
+
+--
+
+#### For most apis, context is re-sent every request (stateless API)
+
+```
+messages = [
+  {"role": "system", "content": "You are a concise BI tutor."},
+  {"role": "user", "content": "What is OLAP?"},
+  {"role": "assistant", "content": "OLAP is ..."},
+  {"role": "user", "content": "Now compare it to OLTP."},
+]
+```
+
+- The server doesn't remember between calls; you include the full history
+- ChatGPT handles this automatically;
+
+---
+
 Context vs. world knowledge
 
 - Buzzwords: prompt, context window, memorization vs. generalization
