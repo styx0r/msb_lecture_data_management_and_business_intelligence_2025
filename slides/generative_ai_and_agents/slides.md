@@ -490,38 +490,71 @@ Assistant: "For laptops the return window is 30 days, so 45 days is outside the 
 
 ---
 
-Vector databases: why they exist
+#### Vector databases: What is a Vector Embedding
 
-- Buzzwords: semantic search, similarity, nearest neighbors
-- Prepare: contrast keyword search vs. semantic search
+<img
+      src="../assets/generative_ai_and_agents/imgs/imgs.013.png"
+      alt="API request/response diagram"
+      style="
+        width: 640px;
+        margin: 0 auto 0rem auto;
+        background: transparent;
+      "
+/>
 
----
+--
 
-What is a vector?
+#### Vector Embedings: More than just a representation of words
 
-- Buzzwords: high-dimensional point, embedding space
-- Prepare: 2D sketch showing similar points close together
+<img
+      src="../assets/generative_ai_and_agents/imgs/imgs.014.png"
+      alt="API request/response diagram"
+      style="
+        width: 640px;
+        margin: 0 auto 0rem auto;
+        background: transparent;
+      "
+/>
 
----
+--
 
-How vector search works
+<img
+      src="../assets/generative_ai_and_agents/imgs/imgs.015.png"
+      alt="API request/response diagram"
+      style="
+        width: 640px;
+        margin: 0 auto 0rem auto;
+        background: transparent;
+      "
+/>
 
-- Buzzwords: cosine similarity, k-NN, indexing
-- Prepare: small diagram of query vector → nearest matches
+--
 
----
+Grounding with Retrieval Augmentend Generation (RAG)
 
-Grounding with vector search (RAG)
-
-- Buzzwords: retrieve, augment, generate
-- Prepare: pipeline diagram: query → retrieve → prompt → answer
+<img
+      src="../assets/generative_ai_and_agents/imgs/imgs.016.png"
+      alt="API request/response diagram"
+      style="
+        width: 640px;
+        margin: 0 auto 0rem auto;
+        background: transparent;
+      "
+/>
 
 ---
 
 Agents: from models to actions
 
-- Buzzwords: goal, plan, tools, feedback loop
-- Prepare: simple agent loop diagram
+<img
+      src="../assets/generative_ai_and_agents/imgs/imgs.017.png"
+      alt="API request/response diagram"
+      style="
+        width: 640px;
+        margin: 0 auto 0rem auto;
+        background: transparent;
+      "
+/>
 
 ---
 
