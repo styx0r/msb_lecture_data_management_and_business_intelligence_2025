@@ -406,10 +406,47 @@ Takeaway:
 
 ---
 
-Limitations of LLMs
+Limitations of LLMs: Hallucinations
 
-- Buzzwords: hallucinations, stale knowledge, context limits
-- Prepare: 2-3 failure examples (fabricated citation, outdated fact)
+- Fabricates facts, numbers, or citations
+- Sounds confident but is not grounded
+
+Example (fabricated citation):
+
+```
+Q: Which paper proves that "X dashboard cuts churn by 40%"?
+A: "Smith et al., 2023, Journal of BI Systems"
+```
+
+This paper doesn't even exist.
+
+--
+
+Limitations of LLMs: Stale knowledge
+
+- Training data has a cutoff date
+- New events, policies, or releases can be missing
+
+Example (outdated fact):
+
+```
+Q: What are the latest 2025 KPIs for our company?
+A: I don't have access to your 2025 data unless you provide it.
+```
+
+--
+
+Limitations of LLMs: Context limits
+
+- Only sees what fits into the context window
+- Long documents get truncated or summarized
+
+Example (missing earlier detail):
+
+```
+Q: In the 60-page report, what was the Q1 Germany margin?
+A: I don't see that number in the provided context.
+```
 
 ---
 
